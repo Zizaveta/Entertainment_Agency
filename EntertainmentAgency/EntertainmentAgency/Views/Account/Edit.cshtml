@@ -1,0 +1,40 @@
+﻿@model EntertainmentAgency.Models.EditModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Редактировать данные профиля</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    @Html.ValidationSummary(true, "")
+    <div>
+        <p>Surname: @Html.EditorFor(model => model.Surname)</p>
+    </div>
+    <div>
+        <p>Name: @Html.EditorFor(model => model.Name)</p>
+    </div>
+
+    <div>
+        <p>Phone: @Html.EditorFor(model => model.PhoneNumber)</p>
+    </div>
+
+    <div>
+        <p>Password: @Html.EditorFor(model => model.Password)</p>
+    </div>
+
+    <div>
+        <p>PasswordConfirm: @Html.EditorFor(model => model.PasswordConfirm)</p>
+    </div>
+
+    <div>
+        <div>
+            <input type="submit" value="Сохранить" />
+        </div>
+    </div>
+</div>
+}
