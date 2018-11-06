@@ -330,6 +330,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Shared\_PartialLoginRegistr.cshtml" />
     <Content Include="Views\Home\_PartialMenuView.cshtml" />
+    <Content Include="Views\Home\_PartialDesignView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
