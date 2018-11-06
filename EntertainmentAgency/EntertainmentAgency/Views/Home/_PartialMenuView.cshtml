@@ -1,0 +1,32 @@
+﻿@model List<EntertainmentAgency.Models.Menu>
+
+@if (Model != null)
+{
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <img src=@Model[0].Image width="100px" height="100px" alt="Image here" />
+                    </div>
+                    <div class="col-sm">
+                        @Html.EditorFor(elem => elem[0].Name)
+                    </div>
+                    <div class="col-sm">
+                        @Html.EditorFor(elem => elem[0].About)
+                    </div>
+                    <div class="col-sm">
+                        @Html.EditorFor(elem =>  elem[0].Price)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+else
+{
+<p>Empty!!!</p>
+}
