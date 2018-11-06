@@ -222,6 +222,7 @@
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Models\DBModels\ApplicationContext.cs" />
     <Compile Include="Models\DBModels\ApplicationUser.cs" />
+    <Compile Include="Models\DBModels\MyInit.cs" />
     <Compile Include="Models\ViewModels\Competition.cs" />
     <Compile Include="Models\ViewModels\Design.cs" />
     <Compile Include="Models\ViewModels\EditModel.cs" />
@@ -327,6 +328,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Shared\_PartialLoginRegistr.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

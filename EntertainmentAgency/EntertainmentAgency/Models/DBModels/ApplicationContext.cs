@@ -10,6 +10,7 @@ namespace EntertainmentAgency.Models
     public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationContext() : base("DefaultConnection") {
+            Database.SetInitializer<ApplicationContext>(new MyInit<ApplicationContext>());
         }
         public virtual DbSet<Competition> Competitions { get; set; }
         public virtual DbSet<Design> Designes { get; set; }

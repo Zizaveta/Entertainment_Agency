@@ -1,0 +1,22 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <li>
+        @Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li>
+        @Html.ActionLink("Edit", "Edit", "Account")
+    </li>
+    <li>
+        @Html.ActionLink("Log OUT", "LogOut", "Account")
+    </li>
+}
+else
+{
+    <li>
+        @Html.ActionLink("Sign Up", "Register", "Account")
+    </li>
+    <li>
+        @Html.ActionLink("Sign In", "Login", "Account")
+    </li>
+}
+

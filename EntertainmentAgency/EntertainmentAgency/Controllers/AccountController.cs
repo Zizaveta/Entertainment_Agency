@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace EntertainmentAgency.Controllers
 {
@@ -32,7 +33,8 @@ namespace EntertainmentAgency.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email, Surname = model.Surname, Name = model.Name };
+                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email, Surname = model.Surname, Name = model.Name, MyRole =  MyRoles.User };
+                
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -45,7 +47,7 @@ namespace EntertainmentAgency.Controllers
                         ModelState.AddModelError("", error);
                     }
                 }
-            }
+                }
             return View(model);
         }
         private IAuthenticationManager AuthenticationManager
