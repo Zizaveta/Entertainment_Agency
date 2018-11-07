@@ -1,0 +1,31 @@
+﻿<style>
+    div div div div div div:hover {
+        background-color: aliceblue;
+    }
+</style>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Create your order</h2>
+<div class="text-right">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-1">
+                <button id="TypeIdButton" >Type</button>
+            </div>
+            <div class="col-1">
+                <button id="DesignIdButton" disabled>Design</button>
+            </div>
+            <div class="col-1">
+                <button id="MenuIdButton" disabled>Menu</button>
+            </div>
+            <div class="col-1">
+                <button id="CompetitionIdButton" disabled>Competition</button>
+            </div>
+        </div>
+    </div>
+    <div class="justify-content-end">
+        @Html.Action("_PartialTypesView", "Order")
+    </div>
+</div>
