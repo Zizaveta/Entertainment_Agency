@@ -27,6 +27,35 @@
             }
         </div>
     </div>
+    @*<div>
+        <div class="container">
+
+
+
+            <div class="row">
+
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    
+                    <div class="col-4 text-center">
+                        <div class="card" style="width: auto; height: 300pt">
+                            <img class="card-img-top" src=@Model[i].Image alt="Card image cap" style="width: auto; height: 200px">
+                            <div class="card-body">
+                                <h5 class="card-title">@Model[i].Name   -   @Model[i].Price$</h5>
+                                <p class="card-text">@Model[i].About</p>
+                                <a href="#" class="btn btn-primary"  >Add to an order</a>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                }
+            </div>
+            </div>
+    </div>*@
+
+
 }
 else
 {
