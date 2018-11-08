@@ -29,6 +29,9 @@ namespace EntertainmentAgency.Models
             context.Competitions.Add(new Competition() { Name = "competition5", About = "About competititon5", Price = 10.10 });
             context.SaveChanges();
 
+            
+
+
             //base.Seed(context);
         }
     }
