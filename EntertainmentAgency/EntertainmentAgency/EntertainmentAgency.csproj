@@ -336,6 +336,7 @@
     <Content Include="Views\Home\_PartialCompetitionView.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_PartialTypesView.cshtml" />
+    <Content Include="Views\Order\_PartialDesignView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,5 +23,16 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView(m);
         }
+
+        public PartialViewResult _PartialDesignView(int id)
+        {
+            List<EntertainmentAgency.Models.Design> m;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                m = db.Designes.OrderBy(elem => elem.typeOfEntertainment.Type).Where(elem => elem.typeOfEntertainment.Id == id).ToList();
+            }
+            return PartialView(m);
+        }
+
     }
 }

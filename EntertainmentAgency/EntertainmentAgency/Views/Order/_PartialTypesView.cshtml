@@ -1,7 +1,12 @@
 ﻿@model List<EntertainmentAgency.Models.TypeOfEntertainment>
 
+
 @if (Model != null)
 {
+    <div id="mainDiv">
+
+    </div>
+
     <div style="width: 900px; height: 500px">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -16,16 +21,16 @@
                 {
                     if (i == 0)
                     {
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" style="width: 900px; height: 500px" src=@Model[i].Img alt=@Model[i].Type>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>@Model[i].Type</h5>
-                            </div>
+                    <div class="carousel-item active" id="loadPartialView" onclick="TypeClick(@Model[i].Id)">
+                        <img class="d-block w-100" style="width: 900px; height: 500px" src=@Model[i].Img alt=@Model[i].Type>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@Model[i].Type</h5>
                         </div>
+                    </div>
                     }
                     else
                     {
-                        <div class="carousel-item">
+                        <div class="carousel-item" onclick="TypeClick(@Model[i].Id)">
                             <img class="d-block w-100" style="width: 900px; height: 500px" src=@Model[i].Img alt=@Model[i].Type>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>@Model[i].Type</h5>
@@ -44,9 +49,22 @@
             </a>
         </div>
     </div>
-    <script>$('.carousel').carousel('cycle')</script>
+    <script>$('.carousel').carousel()</script>
 }
 else
 {
     <h4>Empty list</h4>
 }
+
+<script>
+    function TypeClick(myid) {
+        $.ajax({
+            url: "/Order/_PartialDesignView",
+            dataType: "html",
+            data: { id: myid },
+            success: function (result) {
+                $('#mainDiv').html(result);
+            }
+        });
+    }
+</script>

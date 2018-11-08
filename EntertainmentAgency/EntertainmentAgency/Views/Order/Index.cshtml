@@ -1,8 +1,4 @@
-﻿<style>
-    div div div div div div:hover {
-        background-color: aliceblue;
-    }
-</style>
+﻿
 @{
     ViewBag.Title = "Index";
 }
@@ -12,7 +8,7 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-1">
-                <button id="TypeIdButton" >Type</button>
+                <button id="TypeIdButton">Type</button>
             </div>
             <div class="col-1">
                 <button id="DesignIdButton" disabled>Design</button>
@@ -25,7 +21,38 @@
             </div>
         </div>
     </div>
-    <div class="justify-content-end">
+
+    <div id="mainDiv" class="justify-content-end">
         @Html.Action("_PartialTypesView", "Order")
     </div>
 </div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        $(document).ready(function () {
+            $("#DesignIdButton").click(function () {
+                $.ajax({
+                    url: "_PartialDesignView",
+                    dataType: "html",
+  
+                    success: function (result) {
+                        $('#mainDiv').html(result);
+                    }
+                });
+            });
+            $("#TypeIdButton").click(function () {
+                alert("All your actions will delete");
+                $.ajax({
+                    url: "_PartialTypesView",
+                    dataType: "html",
+
+                    success: function (result) {
+                        $('#mainDiv').html(result);
+                    }
+                });
+            });
+        });
+    </script>
+}
