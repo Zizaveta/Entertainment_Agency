@@ -56,6 +56,26 @@
                     }
                 });
             });
+            $("#MenuIdButton").click(function () {
+                $.ajax({
+                    url: "/Order/_PartialMenuView",
+                    dataType: "html",
+
+                    success: function (result) {
+                        $('#mainDiv').html(result);
+                    }
+                });
+            });
+            $("#CompetitionIdButton").click(function () {
+                $.ajax({
+                    url: "/Order/_PartialCompetitionView",
+                    dataType: "html",
+
+                    success: function (result) {
+                        $('#mainDiv').html(result);
+                    }
+                });
+            });
         });
     </script>
 }

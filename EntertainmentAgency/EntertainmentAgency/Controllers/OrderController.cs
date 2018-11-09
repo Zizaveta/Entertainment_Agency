@@ -26,6 +26,7 @@ namespace EntertainmentAgency.Controllers
 
         public PartialViewResult _PartialDesignView(int id)
         {
+            ViewBag.IDTypeEntertainment = id;
             List<EntertainmentAgency.Models.Design> m;
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -33,6 +34,23 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView(m);
         }
-
+        public PartialViewResult _PartialMenuView()
+        {
+            List<EntertainmentAgency.Models.Menu> m;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                m = db.Menu.OrderBy(elem => elem.Name).ToList();
+            }
+            return PartialView(m);
+        }
+        public PartialViewResult _PartialCompetitionView()
+        {
+            List<EntertainmentAgency.Models.Competition> m;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                m = db.Competitions.OrderBy(elem => elem.Name).ToList();
+            }
+            return PartialView(m);
+        }
     }
 }
