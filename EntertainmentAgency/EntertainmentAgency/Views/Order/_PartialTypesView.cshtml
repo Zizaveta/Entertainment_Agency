@@ -58,6 +58,9 @@ else
 
 <script>
     function TypeClick(myid) {
+        $("#DesignIdButton").removeAttr("disabled");   
+        $("#MenuIdButton").removeAttr("disabled");   
+        $("#CompetitionIdButton").removeAttr("disabled");   
         $.ajax({
             url: "/Order/_PartialDesignView",
             dataType: "html",

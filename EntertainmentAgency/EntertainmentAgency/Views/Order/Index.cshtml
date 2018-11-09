@@ -34,7 +34,7 @@
         $(document).ready(function () {
             $("#DesignIdButton").click(function () {
                 $.ajax({
-                    url: "_PartialDesignView",
+                    url: "/Order/_PartialDesignView",
                     dataType: "html",
   
                     success: function (result) {
@@ -44,8 +44,11 @@
             });
             $("#TypeIdButton").click(function () {
                 alert("All your actions will delete");
+                $("#DesignIdButton").attr("disabled", "disabled");
+                $("#MenuIdButton").attr("disabled", "disabled");
+                $("#CompetitionIdButton").attr("disabled", "disabled");
                 $.ajax({
-                    url: "_PartialTypesView",
+                    url: "/Order/_PartialTypesView",
                     dataType: "html",
 
                     success: function (result) {
