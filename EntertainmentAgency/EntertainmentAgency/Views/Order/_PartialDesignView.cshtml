@@ -51,7 +51,7 @@
                             <div class="row">
                                 @for (int i = 0; i < 4 && i < Model.Count; i++)
                                 {
-                                    <div class="col-md-3 rounded-circle">
+                                    <div class="col-md-3 rounded-circle" onclick="ChooseDesign(@Model[i].Id)">
                                         <a href="#">
                                             <img src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
                                         </a>
@@ -65,7 +65,7 @@
                             <div class="row">
                                 @for (int i = 4; i < Model.Count; i++)
                                 {
-                                    <div class="col-md-3 rounded-circle">
+                                    <div class="col-md-3 rounded-circle"  onclick="ChooseDesign(@Model[i].Id)">
                                         <a href="#">
                                             <img src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
                                         </a>
@@ -96,4 +96,15 @@ else
     $('#blogCarousel').carousel({
         interval: 5000
     });
+    function ChooseDesign(myid) {
+        //alert(id);
+        $.ajax({
+            url: "/Order/_PartialMenuView",
+            dataType: "html",
+            data: { id: myid },
+            success: function (result) {
+                $('#mainDiv').html(result);
+            }
+        });
+    }
 </script>

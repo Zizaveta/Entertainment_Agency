@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<h1>@ViewBag.Order</h1>
 <h2>Create your order</h2>
 <div class="text-right">
     <div class="container">
@@ -14,10 +14,13 @@
                 <button id="DesignIdButton" disabled>Design</button>
             </div>
             <div class="col-1">
-                <button id="MenuIdButton" disabled>Menu</button>
+                <button id="MenuIdButton">Menu</button>
             </div>
             <div class="col-1">
                 <button id="CompetitionIdButton" disabled>Competition</button>
+            </div>
+            <div class="col-1">
+                <button id="ShowPriceListIdButton">Show Price List</button>
             </div>
         </div>
     </div>
@@ -45,7 +48,6 @@
             $("#TypeIdButton").click(function () {
                 alert("All your actions will delete");
                 $("#DesignIdButton").attr("disabled", "disabled");
-                $("#MenuIdButton").attr("disabled", "disabled");
                 $("#CompetitionIdButton").attr("disabled", "disabled");
                 $.ajax({
                     url: "/Order/_PartialTypesView",

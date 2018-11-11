@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EntertainmentAgency.Models
 {
-    public enum MyRoles {User, Admin, Employeer}
+    public enum MyRoles {User, Admin}
     public class ApplicationUser : IdentityUser
     {
         public string Surname { get; set; }

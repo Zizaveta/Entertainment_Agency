@@ -12,7 +12,28 @@ namespace EntertainmentAgency.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            return View("Index");
+            if (User.Identity.IsAuthenticated)
+            {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    try
+                    {
+                        db.PriceLists.First(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit);
+                        ViewBag.Order = "Continue your order";
+                    }
+                    catch
+                    {
+                        db.PriceLists.Add(new PriceList() { user = db.Users.First(elem => elem.UserName == User.Identity.Name), StatusOfOrder = StatusOfOrder.Edit, Price = 0 });
+                        db.SaveChanges();
+                        ViewBag.Order = "Create your order";
+                    }
+                }
+            }
+            else
+            {
+                ViewBag.Order = "Please, authorize to create order";
+            }
+                return View("Index");
         }
         public PartialViewResult _PartialTypesView()
         {
@@ -23,22 +44,31 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView(m);
         }
-
-        public PartialViewResult _PartialDesignView(int id)
+      
+        public PartialViewResult _PartialDesignView(int id=0)
         {
-            ViewBag.IDTypeEntertainment = id;
             List<EntertainmentAgency.Models.Design> m;
             using (ApplicationContext db = new ApplicationContext())
             {
-                m = db.Designes.OrderBy(elem => elem.typeOfEntertainment.Type).Where(elem => elem.typeOfEntertainment.Id == id).ToList();
+                if(id!=0)
+                {
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).TypeOfEntertainment = db.TypeOfEntertainments.FirstOrDefault(elem => elem.Id == id);
+                    db.SaveChanges();
+                }
+                m = db.Designes.Where(elem => elem.typeOfEntertainment.Id == db.PriceLists.FirstOrDefault(elem2=> elem2.user.UserName==User.Identity.Name && elem2.StatusOfOrder==StatusOfOrder.Edit).TypeOfEntertainment.Id).OrderBy(elem => elem.typeOfEntertainment.Type).ToList();
             }
             return PartialView(m);
         }
-        public PartialViewResult _PartialMenuView()
+        public PartialViewResult _PartialMenuView(int id=0)
         {
             List<EntertainmentAgency.Models.Menu> m;
             using (ApplicationContext db = new ApplicationContext())
             {
+                if(id!=0)
+                {
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).design = db.Designes.FirstOrDefault(elem => elem.Id == id);
+                    db.SaveChanges();
+                }
                 m = db.Menu.OrderBy(elem => elem.Name).ToList();
             }
             return PartialView(m);
@@ -48,7 +78,7 @@ namespace EntertainmentAgency.Controllers
             List<EntertainmentAgency.Models.Competition> m;
             using (ApplicationContext db = new ApplicationContext())
             {
-                m = db.Competitions.OrderBy(elem => elem.Name).ToList();
+                m = db.Competitions.Where(elem => elem.typeOfEntertainment.Id == db.PriceLists.FirstOrDefault(elem2 => elem2.user.UserName == User.Identity.Name && elem2.StatusOfOrder == StatusOfOrder.Edit).Id).OrderBy(elem => elem.Name).ToList();
             }
             return PartialView(m);
         }
