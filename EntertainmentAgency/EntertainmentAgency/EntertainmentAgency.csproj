@@ -227,6 +227,7 @@
     <Compile Include="Models\ViewModels\Competition.cs" />
     <Compile Include="Models\ViewModels\Design.cs" />
     <Compile Include="Models\ViewModels\EditModel.cs" />
+    <Compile Include="Models\ViewModels\Employeer.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
     <Compile Include="Models\ViewModels\Menu.cs" />
     <Compile Include="Models\ViewModels\PriceList.cs" />

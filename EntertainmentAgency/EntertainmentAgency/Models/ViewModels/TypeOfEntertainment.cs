@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace EntertainmentAgency.Models
 {
@@ -12,13 +9,15 @@ namespace EntertainmentAgency.Models
         {
             ListOfCompetitions = new List<Competition>();
             ListOfDesigns = new List<Design>();
+            ListOfPriceList = new List<PriceList>();
         }
         public int Id{get; set;}
         [Required]
         public string Type { get; set; }
         public string Img { get; set; }
 
-        public virtual IEnumerable<Design> ListOfDesigns { get; set; }
-        public virtual IEnumerable<Competition> ListOfCompetitions { get; set; }
+        public virtual List<Design> ListOfDesigns { get; set; }
+        public virtual List<Competition> ListOfCompetitions { get; set; }
+        public virtual List<PriceList> ListOfPriceList { get; set; }
     }
 }

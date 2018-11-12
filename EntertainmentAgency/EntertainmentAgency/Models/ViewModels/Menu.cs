@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace EntertainmentAgency.Models
 {
     public class Menu
     {
+        public Menu()
+        {
+            ListOfPriceList = new List<PriceList>();
+        }
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
@@ -15,5 +16,6 @@ namespace EntertainmentAgency.Models
         [Required]
         public double Price { get; set; }
         public string About { get; set; }
+        public virtual List<PriceList> ListOfPriceList { get; set; }
     }
 }
