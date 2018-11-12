@@ -51,7 +51,11 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView(m);
         }
-
+        public PartialViewResult _PartialCarouselView()
+        {
+            
+            return PartialView();
+        }
         public ActionResult TempView()
         {
             return View();

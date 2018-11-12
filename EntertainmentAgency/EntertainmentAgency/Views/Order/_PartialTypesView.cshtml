@@ -1,55 +1,63 @@
 ﻿@model List<EntertainmentAgency.Models.TypeOfEntertainment>
 
+<style>
+    .mincard{
+
+    }
+    .maxcard{
+
+    }
+
+    </style>
 
 @if (Model != null)
 {
-    <div id="mainDiv">
-
-    </div>
-
-    <div style="width: 900px; height: 500px">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                @for (int i = 1; i < Model.Count; i++)
-                {
-                    <li data-target="#carouselExampleIndicators" data-slide-to=@i></li>
-                }
-            </ol>
-            <div class="carousel-inner">
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    if (i == 0)
-                    {
-                    <div class="carousel-item active" id="loadPartialView" onclick="TypeClick(@Model[i].Id)">
-                        <img class="d-block w-100" style="width: 900px; height: 500px" src=@Model[i].Img alt=@Model[i].Type>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>@Model[i].Type</h5>
-                        </div>
+    @*<div id="carousell">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner">
+            <div class="carousel-item active crs-slide">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
-                    }
-                    else
-                    {
-                        <div class="carousel-item" onclick="TypeClick(@Model[i].Id)">
-                            <img class="d-block w-100" style="width: 900px; height: 500px" src=@Model[i].Img alt=@Model[i].Type>
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>@Model[i].Type</h5>
-                            </div>
-                        </div>
-                    }
-                }
+                </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="carousel-item crs-slide">
+                <img class="d-block w-100" src="https://d1kjm29x4mml1x.cloudfront.net/blog/wp-content/uploads/2016/08/5BirthdayVidIdeas_Facebook_v2-582x437.png" alt="Second slide">
+            </div>
+            <div class="carousel-item crs-slide">
+                <img class="d-block w-100" src="https://www.funktionevents.co.uk/images/pictures/new/1-homepage-images/corporate-events-(banner-medium).jpg?v=0a7c84de" alt="Third slide">
+            </div>
+
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <script>$('.carousel').carousel()</script>
+    </div>*@
+
+<div class="container">
+    <div class="container-content">
+        </div>
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 }
 else
 {
@@ -57,10 +65,20 @@ else
 }
 
 <script>
+    @Scripts.Render("~/bundles/jquery")
+    $('.carousel').carousel();
+
+    $(function ()
+    {
+        @ViewBag.index=0;
+        $(".container .container-content").append("<div class='card mincard'><img class='card - img - top' src='.../100px180/' alt='Card image cap'>< div class= 'card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div ></div></div>")
+
+    })
+
     function TypeClick(myid) {
-        $("#DesignIdButton").removeAttr("disabled");   
-        $("#MenuIdButton").removeAttr("disabled");   
-        $("#CompetitionIdButton").removeAttr("disabled");   
+        $("#DesignIdButton").removeAttr("disabled");
+        $("#MenuIdButton").removeAttr("disabled");
+        $("#CompetitionIdButton").removeAttr("disabled");
         $.ajax({
             url: "/Order/_PartialDesignView",
             dataType: "html",
