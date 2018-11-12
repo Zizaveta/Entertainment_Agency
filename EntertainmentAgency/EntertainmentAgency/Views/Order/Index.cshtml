@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create your order</h2>
@@ -39,7 +38,7 @@
                 $.ajax({
                     url: "/Order/_PartialDesignView",
                     dataType: "html",
-  
+
                     success: function (result) {
                         $('#mainDiv').html(result);
                     }

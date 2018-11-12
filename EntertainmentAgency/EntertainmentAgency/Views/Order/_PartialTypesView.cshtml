@@ -1,80 +1,73 @@
 ﻿@model List<EntertainmentAgency.Models.TypeOfEntertainment>
 
+
+
 <style>
-    .mincard{
-
-    }
-    .maxcard{
-
+    body {
+        background-size: cover;
     }
 
-    </style>
+    .mincard {
+        width: 200px;
+        height: 300px;
+        font-size: 10px;
+    }
+
+    .maxcard {
+        width: 300px;
+        height: 400px;
+    }
+    .min-btn{
+        font-size: 10px;
+        height:30px;
+        width: 90px;
+    }
+</style>
 
 @if (Model != null)
 {
-    @*<div id="carousell">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        
-        <div class="carousel-inner">
-            <div class="carousel-item active crs-slide">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item crs-slide">
-                <img class="d-block w-100" src="https://d1kjm29x4mml1x.cloudfront.net/blog/wp-content/uploads/2016/08/5BirthdayVidIdeas_Facebook_v2-582x437.png" alt="Second slide">
-            </div>
-            <div class="carousel-item crs-slide">
-                <img class="d-block w-100" src="https://www.funktionevents.co.uk/images/pictures/new/1-homepage-images/corporate-events-(banner-medium).jpg?v=0a7c84de" alt="Third slide">
-            </div>
 
+
+    <div class="container">
+        <div class="container-content">
+           
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" onclick="LinkClick()" >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
-    </div>*@
-
-<div class="container">
-    <div class="container-content">
-        </div>
-
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
 }
 else
 {
     <h4>Empty list</h4>
 }
-
+@Scripts.Render("~/bundles/jquery")
 <script>
-    @Scripts.Render("~/bundles/jquery")
-    $('.carousel').carousel();
+    
 
-    $(function ()
-    {
-        @ViewBag.index=0;
-        $(".container .container-content").append("<div class='card mincard'><img class='card - img - top' src='.../100px180/' alt='Card image cap'>< div class= 'card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary'>Go somewhere</a></div ></div></div>")
 
+    $(function () {
+        
+        @(ViewBag.index = 0);
+        $(".container .container-content").append("<div class='row'></div>");
+        $(".container .container-content .row").append("<div class='col-4'><div class='card mincard'><img style='height: 100px;' class= 'card - img - top' src = @Model[Model.Count-1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+        $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+        $(".container .container-content .row").append("<div class='col-4'><div class='card mincard'><img style='height: 100px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+        
     })
+    function LinkClick()
+    {
+        
+        
 
+    }
     function TypeClick(myid) {
         $("#DesignIdButton").removeAttr("disabled");
         $("#MenuIdButton").removeAttr("disabled");
