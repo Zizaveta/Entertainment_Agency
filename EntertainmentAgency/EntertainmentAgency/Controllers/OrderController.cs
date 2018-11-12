@@ -82,5 +82,20 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView(m);
         }
+        [HttpPost]
+        public ActionResult AddMenu(int Id, int Count)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if(db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.ContainsKey(Id))
+                {
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu[Id] += Count;
+                }
+                else
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.Add(Id, Count);
+                db.SaveChanges();
+            }
+            return View("Index");
+        }
     }
 }

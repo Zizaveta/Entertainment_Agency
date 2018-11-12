@@ -3,24 +3,37 @@
 
 @if (Model != null)
 {
-<div class="container">
-    <div class="row">
-        @for (int i = 0; i < Model.Count; i++)
-        {
-        <div class="card col-sm-12 col-md-4" >
-            <img class="card-img-top" src=@Model[i].Image height="250px"  alt="Card image cap">
-            <div class="card-body text-left">
-                <h5 class="card-title">@Model[i].Name</h5>
-                <p class="card-text">@Model[i].About</p>
-                <input type="number" min="0" placeholder="Counter" />
-                <a href="#" class="btn btn-primary">Add to List</a>
-            </div>
+    <div class="container">
+        <div class="row">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="card col-sm-12 col-md-4">
+                    <img class="card-img-top" src=@Model[i].Image height="250px" alt="Card image cap">
+                    <div class="card-body text-left">
+                        <h5 class="card-title">@Model[i].Name</h5>
+                        <p class="card-text">@Model[i].About</p>
+                            <input id="@Model[i].Id" name="Count" type="number" min="0" placeholder="Counter" />
+                            <button class="btn btn-primary" onclick="AddMenu(@Model[i].Id)">Add to List</button>
+                    </div>
+                </div>
+            }
         </div>
-        }
     </div>
-</div>
 }
 else
 {
     <p>Empty list</p>
 }
+
+    <script>
+        function AddMenu(myid) {
+            $.ajax({
+                url: "/Order/AddMenu",
+                dataType: "html",
+                data: { Id: myid, Count: $("#" + myid).val() },
+                success: function (result) {
+                    alert("Added");
+                }
+            });
+        }
+    </script>

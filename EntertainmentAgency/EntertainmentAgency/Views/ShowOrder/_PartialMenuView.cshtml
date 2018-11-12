@@ -1,0 +1,18 @@
+﻿@model List<EntertainmentAgency.Models.Menu>
+
+@if (Model != null)
+{
+    <table>
+        @{ var grid = new WebGrid(Model, canPage: false);}
+        <div>
+
+            @grid.GetHtml(tableStyle: "table table-bordered table-responsive table-hover",
+                     columns: grid.Columns(
+                          grid.Column("Name", "Name"),
+                          grid.Column("Image", "Image"),
+                          grid.Column("Price", "Price")
+                     )
+                     )
+        </div>
+    </table>
+}
