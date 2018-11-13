@@ -59,7 +59,7 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView(m);
         }
-        public PartialViewResult _PartialMenuView(int id=0)
+        public ActionResult _PartialMenuView(int id=0)
         {
             List<EntertainmentAgency.Models.Menu> m;
             using (ApplicationContext db = new ApplicationContext())

@@ -26,35 +26,36 @@
     <div>
         Электронный адрес
         <div>
-            @Html.EditorFor(model => model.Email)
+            @Html.TextBoxFor(model=>model.Email)
+           
         </div>
     </div>
 
     <div>
         Surname
         <div>
-            @Html.EditorFor(model => model.Surname)
+            @Html.TextBoxFor(model=>model.Surname)
         </div>
     </div>
 
     <div>
         Name
         <div>
-            @Html.EditorFor(model => model.Name)
+            @Html.TextBoxFor(model=>model.Name)
         </div>
     </div>
 
     <div>
         Пароль
         <div>
-            @Html.EditorFor(model => model.Password)
+            @Html.TextBoxFor(model=>model.Password)
         </div>
     </div>
 
     <div>
         Подтвердить пароль
         <div>
-            @Html.EditorFor(model => model.PasswordConfirm)
+            @Html.TextBoxFor(model=>model.PasswordConfirm)
         </div>
     </div>
 
