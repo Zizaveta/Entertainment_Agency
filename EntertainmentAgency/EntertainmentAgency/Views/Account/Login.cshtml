@@ -1,35 +1,43 @@
 ﻿@model EntertainmentAgency.Models.LoginModel
 
-@{
-    ViewBag.Title = "Login";
-}
+
 
 <h2>Вход на сайт</h2>
 <style>
-    body{
-        background-size:cover;
+    body {
+        background-size: cover;
+        background-repeat: no-repeat;
     }
-    .txt{
+
+    .txt {
         color: red;
     }
-    </style>
+    .class1{
+        
+    }
+</style>
 
-@using (Html.BeginForm())
-{
+<div class="class1">
+    @using (Html.BeginForm())
+    {
+
     @Html.AntiForgeryToken()
 
     <div>
+        
         @Html.ValidationSummary()
         <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
         <p>
             <label>Email</label><br />
-            @Html.EditorFor(x => x.Email, new { @class = "txt" })
-                
+            @Html.TextBoxFor(model => model.Email, new { @class = "txt" })
+
         </p>
         <p>
             <label>Password</label><br />
-            @Html.EditorFor(x => x.Password)
+            @Html.TextBoxFor(model => model.Password, new { @class = "txt" })
         </p>
         <p><button type="submit">Войти</button></p>
     </div>
-}
+    }
+    </div>
+    
