@@ -56,10 +56,7 @@ namespace EntertainmentAgency.Controllers
             
             return PartialView();
         }
-        public ActionResult TempView()
-        {
-            return View();
-        }
+        
         public ActionResult StartPage()
         {
             return View();

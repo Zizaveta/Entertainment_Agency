@@ -97,5 +97,9 @@ namespace EntertainmentAgency.Controllers
             }
             return View("Index");
         }
+        public PartialViewResult _LoadItems()
+        {
+            return PartialView();
+        }
     }
 }

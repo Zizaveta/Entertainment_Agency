@@ -1,0 +1,19 @@
+﻿@if (ViewBag.type == "Types")
+{
+    @model List<EntertainmentAgency.Models.TypeOfEntertainment>
+}
+
+
+<script>
+    alert("fffffffffff");
+   function{
+        $(".container .container-content").contents().remove();
+        $(".container .container-content").append("<div class='row'></div>");
+        $(".container .container-content .row").append("<div class='offset-2'>");
+        @*if (@ViewBag.way== "next") {
+            $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 100px;' class='card - img - top' src=@Model[ViewBag.index].Img alt='Card image cap'><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+            $(".container .container-content .row").append("<div class='col-3'><div class='card maxcard'><img style='height: 200px; class= ' card - img - top' src=@Model[ViewBag.index+1].Img alt='Card image cap'><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+            $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 100px; class= ' card - img - top' src=@Model[ViewBag.index+2].Img alt='Card image cap'><div class='card-body'><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+        }*@
+    }
+</script>
