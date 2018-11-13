@@ -10,18 +10,7 @@
                     <div class="card-body ">
                         <h5 class="card-title">@Model[i].Name</h5>
                         <p class="card-text">@Model[i].About</p>
-                        @*@if (Model[i].user.Count > 0)
-                            {
-                                Html.DropDownList("StudentGender",
-                                          new SelectList(Model[i].user),
-                                          "Select Gender",
-                                          new { @class = "form-control" });
-                            }
-                            else
-                            {
-                                <p>User Model is empty</p>
-                            }*@
-                        <a href="#" class="card-link">Add</a>
+                        <button onclick="AddCompetition(@Model[i].Id)" class="btn btn-success">Add</button>
                     </div>
                 </div>
             }
@@ -32,3 +21,17 @@ else
 {
     <p>Empty list</p>
 }
+
+<script>
+    function AddCompetition(myid) {
+        $.ajax({
+            url: "/Order/AddCompetition",
+            method: "post",
+            dataType: "html",
+            data: { Id: myid },
+            success: function (result) {
+                alert("Added");
+            }
+        });
+    }
+</script>

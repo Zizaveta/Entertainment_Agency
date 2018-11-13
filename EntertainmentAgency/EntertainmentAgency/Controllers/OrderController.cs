@@ -78,7 +78,8 @@ namespace EntertainmentAgency.Controllers
             List<EntertainmentAgency.Models.Competition> m;
             using (ApplicationContext db = new ApplicationContext())
             {
-                m = db.Competitions.Where(elem => elem.typeOfEntertainment.Id == db.PriceLists.FirstOrDefault(elem2 => elem2.user.UserName == User.Identity.Name && elem2.StatusOfOrder == StatusOfOrder.Edit).Id).OrderBy(elem => elem.Name).ToList();
+                //m = db.Competitions.Where(elem => elem.typeOfEntertainment.Id == db.PriceLists.FirstOrDefault(elem2 => elem2.user.UserName == User.Identity.Name && elem2.StatusOfOrder == StatusOfOrder.Edit).Id).OrderBy(elem => elem.Name).ToList();
+                m = db.Competitions.ToList();
             }
             return PartialView(m);
         }
@@ -96,6 +97,18 @@ namespace EntertainmentAgency.Controllers
                 db.SaveChanges();
             }
             return View("Index");
+        }
+        [HttpPost]
+        public ActionResult AddCompetition(int Id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if(db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).Competitions.FirstOrDefault(elem => elem.Id == Id) == null)
+                {
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).Competitions.Add(db.Competitions.First(elem => elem.Id == Id));
+                }
+            }
+                return View("Index");
         }
         public PartialViewResult _LoadItems()
         {

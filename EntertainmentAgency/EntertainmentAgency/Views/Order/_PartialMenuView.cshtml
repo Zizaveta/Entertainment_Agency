@@ -29,6 +29,7 @@ else
         function AddMenu(myid) {
             $.ajax({
                 url: "/Order/AddMenu",
+                method: "post",
                 dataType: "html",
                 data: { Id: myid, Count: $("#" + myid).val() },
                 success: function (result) {
