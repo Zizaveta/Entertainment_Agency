@@ -1,0 +1,24 @@
+﻿@model List<EntertainmentAgency.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Persons";
+}
+
+
+<table class="table table-striped table-dark">
+    <caption><h1>Persons</h1></caption>
+    <tr>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Name</th>
+        <th>Surname</th>
+    </tr>
+    @for(int i=0; i<Model.Count; i++)
+    {
+    <tr>
+        <td>@Model[i].Email</td>
+        <td>@Model[i].PhoneNumber</td>
+        <td>@Model[i].Name</td>
+        <td>@Model[i].Surname</td>
+    </tr>
+    }
+</table>
