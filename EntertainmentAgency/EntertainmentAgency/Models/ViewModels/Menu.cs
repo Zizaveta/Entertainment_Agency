@@ -7,7 +7,7 @@ namespace EntertainmentAgency.Models
     {
         public Menu()
         {
-            ListOfPriceList = new List<PriceList>();
+            MenuCounts = new List<MenuCount>();
         }
         public int Id { get; set; }
         [Required]
@@ -16,6 +16,6 @@ namespace EntertainmentAgency.Models
         [Required]
         public double Price { get; set; }
         public string About { get; set; }
-        public virtual List<PriceList> ListOfPriceList { get; set; }
+        public virtual List<MenuCount> MenuCounts { get; set; }
     }
 }

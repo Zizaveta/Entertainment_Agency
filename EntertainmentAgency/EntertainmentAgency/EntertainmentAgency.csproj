@@ -231,6 +231,7 @@
     <Compile Include="Models\ViewModels\Employeer.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
     <Compile Include="Models\ViewModels\Menu.cs" />
+    <Compile Include="Models\ViewModels\MenuCount.cs" />
     <Compile Include="Models\ViewModels\PriceList.cs" />
     <Compile Include="Models\ViewModels\RegisterModel.cs" />
     <Compile Include="Models\ViewModels\TypeOfEntertainment.cs" />
@@ -352,6 +353,8 @@
     <Content Include="Views\ShowOrder\_PartialDesignView.cshtml" />
     <Content Include="Views\ShowOrder\_PartialMenuView.cshtml" />
     <Content Include="Views\Order\_LoadItems.cshtml" />
+    <Content Include="Views\ShowOrder\_PartialCompetitionView.cshtml" />
+    <Content Include="Views\ShowOrder\_PartialProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

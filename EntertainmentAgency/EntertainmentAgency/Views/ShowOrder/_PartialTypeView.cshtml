@@ -1,6 +1,12 @@
 ﻿@model EntertainmentAgency.Models.TypeOfEntertainment
 
+<div class="text-center">
 @if (Model != null)
 {
     <h1>@Model.Type</h1>
 }
+else
+{
+    <h1>Not choose type</h1>
+}
+</div>

@@ -1,18 +1,27 @@
-﻿@model List<EntertainmentAgency.Models.Menu>
+﻿@model List<EntertainmentAgency.Models.MenuCount>
 
+<div class="text-center">
 @if (Model != null)
 {
-    <table>
-        @{ var grid = new WebGrid(Model, canPage: false);}
-        <div>
-
-            @grid.GetHtml(tableStyle: "table table-bordered table-responsive table-hover",
-                     columns: grid.Columns(
-                          grid.Column("Name", "Name"),
-                          grid.Column("Image", "Image"),
-                          grid.Column("Price", "Price")
-                     )
-                     )
-        </div>
+    <table class="table table-striped table-dark">
+        <content><h1>Menu</h1></content>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Q-ty</th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                @Html.Action("_PartialProduct", "ShowOrder", new { Id = Model[i].Id })
+                <td>@Model[i].Q_ty</td>
+            </tr>
+        }
     </table>
 }
+else
+{
+    <h1>Empty menu!!!</h1>
+}
+</div>

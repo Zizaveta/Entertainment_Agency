@@ -88,12 +88,12 @@ namespace EntertainmentAgency.Controllers
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                if(db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.ContainsKey(Id))
+                if (db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.FirstOrDefault(elem => elem.Menu.Id == Id) != null)
                 {
-                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu[Id] += Count;
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.FirstOrDefault(elem => elem.Menu.Id == Id).Q_ty += Count;
                 }
                 else
-                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.Add(Id, Count);
+                    db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).menu.Add(new MenuCount() { Menu=db.Menu.FirstOrDefault(elem => elem.Id==Id), Q_ty=Count });
                 db.SaveChanges();
             }
             return View("Index");
@@ -106,6 +106,7 @@ namespace EntertainmentAgency.Controllers
                 if(db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).Competitions.FirstOrDefault(elem => elem.Id == Id) == null)
                 {
                     db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).Competitions.Add(db.Competitions.First(elem => elem.Id == Id));
+                    db.SaveChanges();
                 }
             }
                 return View("Index");
