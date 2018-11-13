@@ -35,7 +35,9 @@ namespace EntertainmentAgency.Controllers
             }
                 return View("Index");
         }
-        public PartialViewResult _PartialTypesView()
+        
+
+        public ActionResult _PartialTypesView()
         {
             List<EntertainmentAgency.Models.TypeOfEntertainment> m;
             using (ApplicationContext db = new ApplicationContext())

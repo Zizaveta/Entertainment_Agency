@@ -4,26 +4,26 @@
 
 <h2>Create your order</h2>
 <div class="row">
-<div class="text-right">
-    <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-1">
-                <button id="TypeIdButton">Type</button>
-            </div>
-            <div class="col-1">
-                <button id="DesignIdButton" disabled>Design</button>
-            </div>
-            <div class="col-1">
-                <button id="MenuIdButton">Menu</button>
-            </div>
-            <div class="col-1">
-                <button id="CompetitionIdButton">Competition</button>
-            </div>
-            <div class="col-1">
-                <a class="btn btn-success" href="/ShowOrder/Index">Show Price List</a>
+    <div class="text-right">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-1">
+                    <button class="id-btn" id="_PartialTypesView">Type</button>
+                </div>
+                <div class="col-1">
+                    <button class="id-btn" id="_PartialDesignView">Design</button>
+                </div>
+                <div class="col-1">
+                    <button class="id-btn" id="_PartialMenuView">Menu</button>
+                </div>
+                <div class="col-1">
+                    <button class="id-btn" id="_PartialCompetitionView">Competition</button>
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-success" href="/ShowOrder/Index">Show Price List</a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div id="mainDiv" class="justify-content-end">
@@ -35,50 +35,20 @@
 @section scripts{
     @Scripts.Render("~/bundles/jquery")
     <script>
+
         $(document).ready(function () {
-            $("#DesignIdButton").click(function () {
-                $.ajax({
-                    url: "/Order/_PartialDesignView",
-                    dataType: "html",
 
+            $(".id-btn").click(function () {
+                var str = "/Order/" + this.id;
+                $.ajax({
+                    url: str,
+                    dataType: "html",
                     success: function (result) {
                         $('#mainDiv').html(result);
                     }
                 });
             });
-            $("#TypeIdButton").click(function () {
-                alert("All your actions will delete");
-                $("#DesignIdButton").attr("disabled", "disabled");
-                $("#CompetitionIdButton").attr("disabled", "disabled");
-                $.ajax({
-                    url: "/Order/_PartialTypesView",
-                    dataType: "html",
 
-                    success: function (result) {
-                        $('#mainDiv').html(result);
-                    }
-                });
-            });
-            $("#MenuIdButton").click(function () {
-                $.ajax({
-                    url: "/Order/_PartialMenuView",
-                    dataType: "html",
-
-                    success: function (result) {
-                        $('#mainDiv').html(result);
-                    }
-                });
-            });
-            $("#CompetitionIdButton").click(function () {
-                $.ajax({
-                    url: "/Order/_PartialCompetitionView",
-                    dataType: "html",
-
-                    success: function (result) {
-                        $('#mainDiv').html(result);
-                    }
-                });
-            });
         });
     </script>
 }
