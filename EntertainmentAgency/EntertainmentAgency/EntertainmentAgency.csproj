@@ -301,6 +301,9 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Auto\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Auto\Persons.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\Menus.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\TypesOfEntertainment.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\Competitions.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
