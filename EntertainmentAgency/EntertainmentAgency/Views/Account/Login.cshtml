@@ -9,9 +9,7 @@
         background-repeat: no-repeat;
     }
 
-    .txt {
-        color: red;
-    }
+
     .class1{
         
     }
@@ -29,12 +27,12 @@
         <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
         <p>
             <label>Email</label><br />
-            @Html.TextBoxFor(model => model.Email, new { @class = "txt" })
+            @Html.TextBoxFor(model => model.Email )
 
         </p>
         <p>
             <label>Password</label><br />
-            @Html.TextBoxFor(model => model.Password, new { @class = "txt" })
+            @Html.PasswordFor(model => model.Password)
         </p>
         <p><button type="submit">Войти</button></p>
     </div>

@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace EntertainmentAgency.Models
 {
-    internal class MyInit<T> : DropCreateDatabaseAlways<ApplicationContext>
+    internal class MyInit<T> : CreateDatabaseIfNotExists<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {

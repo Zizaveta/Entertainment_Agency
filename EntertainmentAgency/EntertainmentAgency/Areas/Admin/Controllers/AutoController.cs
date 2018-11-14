@@ -94,6 +94,172 @@ namespace EntertainmentAgency.Areas.Admin.Controllers
                 }
             }
         }
+        public ActionResult Employeers()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View(db.Employeers.ToList());
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        public ActionResult AddCompetition()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult AddEmployeer()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        public ActionResult AddEmployeer(Employeer model)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    try
+                    {
+                        if (db.Employeers.FirstOrDefault(elem => elem.Email == model.Email) == null)
+                            db.Employeers.Add(new Employeer() { Email = model.Email, Name = model.Name, Phone = model.Phone });
+                        else
+                        {
+                            ViewBag.Error = "Email is in db";
+                            return View();
+                        }
+                        db.SaveChanges();
+                        return RedirectToAction("Employeers","Auto",new { area="Admin"});
+                    }
+                    catch
+                    {
+                        ViewBag.Error = "Unknow mistake";
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult AddMenu()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        public ActionResult AddMenu(Menu model)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    try
+                    {
+                        db.Menu.Add(new Menu() { Image = model.Image, Name = model.Name, About = model.About, Price=model.Price });
+                        db.SaveChanges();
+                        return RedirectToAction("Menus", "Auto", new { area = "Admin" });
+                    }
+                    catch
+                    {
+                        ViewBag.Error = "Unknow mistake";
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult AddDesign()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult AddType()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        public ActionResult AddType(TypeOfEntertainment model)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    try
+                    {
+                        db.TypeOfEntertainments.Add(new TypeOfEntertainment() { Img = model.Img, Type = model.Type });
+                        db.SaveChanges();
+                        return RedirectToAction("TypesOfEntertainment", "Auto", new { area = "Admin" });
+                    }
+                    catch
+                    {
+                        ViewBag.Error = "Unknow mistake";
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
     }
 
 }

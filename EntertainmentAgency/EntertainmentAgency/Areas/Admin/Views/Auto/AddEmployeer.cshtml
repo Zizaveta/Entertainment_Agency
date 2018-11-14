@@ -1,0 +1,30 @@
+﻿@model EntertainmentAgency.Models.Employeer
+@{
+    ViewBag.Title = "AddEmployeer";
+}
+
+<h2>AddEmployeer</h2>
+<div class="text-center">
+    @if (ViewBag.Error != null)
+    {
+        <h3>@ViewBag.Error</h3>
+    }
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(elem => elem.Email)
+            @Html.EditorFor(elem => elem.Email)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.Name)
+            @Html.EditorFor(elem => elem.Name)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.Phone)
+            @Html.EditorFor(elem => elem.Phone)
+        </div>
+        <p><button class="btn btn-success" type="submit">Add</button></p>
+    }
+</div>

@@ -1,0 +1,37 @@
+﻿@model EntertainmentAgency.Models.Menu
+@{
+    ViewBag.Title = "AddMenu";
+}
+
+
+<div class="text-center">
+    <h2>AddMenu</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <h3>@ViewBag.Error</h3>
+    }
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(elem => elem.Image)
+            @Html.EditorFor(elem => elem.Image)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.Name)
+            @Html.EditorFor(elem => elem.Name)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.About)
+            @Html.EditorFor(elem => elem.About)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.Price)
+            @Html.EditorFor(elem => elem.Price)
+        </div>
+        <p><button class="btn btn-success" type="submit">Add</button></p>
+    }
+</div>

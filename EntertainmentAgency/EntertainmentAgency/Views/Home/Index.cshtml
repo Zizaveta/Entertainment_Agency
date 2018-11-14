@@ -79,15 +79,29 @@
 </style>
 <div class="row">
     <div class="col-10">
-        fdfgdfg
+        Create your party)
     </div>
-    <div class="col-1">
-        <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Login", "Account") + "'");">Log in</button>
-    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-1">
+            <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Edit", "Account") + "'");">Edit</button>
+        </div>
 
-    <div class="col-1">
-        <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("Register", "Account") + "'");">Sigh up</button>
-    </div>
+        <div class="col-1">
+            <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("LogOut", "Account") + "'");">Exit</button>
+        </div>
+    }
+    else
+    {
+        <div class="col-1">
+            <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Login", "Account") + "'");">Log in</button>
+        </div>
+
+        <div class="col-1">
+            <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("Register", "Account") + "'");">Sigh up</button>
+        </div>
+    }
+
 
 </div>
 <div class="row" style="height: 20px"></div>
@@ -97,7 +111,7 @@
         <button class="arrow_box" onclick="ShowTypes()">Choose<br> your<br> event </button><br><br><br>
         <button class="arrow_box" onclick="ShowDesigns()">Choose<br> your<br> design </button><br><br><br>
         <button class="arrow_box" onclick="ShowCompetitions()">Choose<br> your<br> concept </button><br><br><br>
-        <button class="arrow_box" onclick="ShowCompetitions()">Choose<br> your<br> menu </button><br><br><br>
+        <button class="arrow_box" onclick="ShowMenus()">Choose<br> your<br> menu </button><br><br><br>
 
         @using (Html.BeginForm("Index", "Order"))
         {<input class="btn btn-success" type="submit" value="Create your own holiday" />

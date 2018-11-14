@@ -1,0 +1,106 @@
+﻿@model List<EntertainmentAgency.Models.Design>
+<style>
+    .blog .carousel-indicators {
+        left: 0;
+        top: auto;
+        bottom: -40px;
+    }
+
+        /* The colour of the indicators */
+        .blog .carousel-indicators li {
+            background: #a3a3a3;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+        }
+
+        .blog .carousel-indicators .active {
+            background: #707070;
+        }
+
+    .carousel-item div div:hover {
+        background-color: aliceblue;
+    }
+
+    body {
+        background-size: cover;
+    }
+</style>
+
+
+@if (Model != null)
+{
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row blog">
+            <div class="col-md-12">
+                <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                        @for (int i = 1; i < Model.Count / 4; i++)
+                        {
+                            <li data-target="#blogCarousel" data-slide-to=@i></li>
+                        }
+                        @if (Model.Count % 4 != 0)
+                        {
+                            <li data-target="#blogCarousel" data-slide-to=@(Model.Count/4)></li>
+                        }
+                    </ol>
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                @for (int i = 0; i < 4 && i < Model.Count; i++)
+                                {
+                                    <div class="col-md-3 rounded-circle">
+                                        <a href="#">
+                                            <img src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                @for (int i = 4; i < Model.Count; i++)
+                                {
+                                    <div class="col-md-3 rounded-circle">
+                                        <a href="#">
+                                            <img src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <!--.item-->
+                    </div>
+                    <!--.carousel-inner-->
+                </div>
+                <!--.Carousel-->
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <h4>Empty list</h4>
+}
+
+
+<script>
+    // optional
+    $('#blogCarousel').carousel({
+        interval: 5000
+    });
+    
+    }
+</script>

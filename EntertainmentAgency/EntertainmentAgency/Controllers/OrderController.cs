@@ -19,7 +19,7 @@ namespace EntertainmentAgency.Controllers
                     try
                     {
                         db.PriceLists.First(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit);
-                        ViewBag.Order = "Continue your order";
+                        ViewBag.Order = "Finish your order";
                     }
                     catch
                     {
@@ -31,7 +31,7 @@ namespace EntertainmentAgency.Controllers
             }
             else
             {
-                ViewBag.Order = "Please, authorize to create order";
+                return RedirectToAction("Index", "Home");
             }
                 return View("Index");
         }
@@ -117,5 +117,6 @@ namespace EntertainmentAgency.Controllers
         {
             return PartialView();
         }
+
     }
 }

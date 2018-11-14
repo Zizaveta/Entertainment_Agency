@@ -3,45 +3,33 @@
         ViewBag.Title = "Competitions";
     }
 
+<div class="text-center">
     <h2>Competitions</h2>
-
+    @if (Model != null)
+    {
     <div class="row">
         <div class="col-4">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                <a class="list-group-item list-group-item-action active" id="list-@Model[0].Id-list" data-toggle="list" href="#list-@Model[0].Id" role="tab" aria-controls="@Model[0].Id">@Model[0].Name</a>
+                @for (int i = 1; i < Model.Count; i++)
+                {
+                    <a class="list-group-item list-group-item-action" id="list-@Model[i].Id-list" data-toggle="list" href="#list-@Model[i].Id" role="tab" aria-controls="@Model[i].Id">@Model[i].Name</a>
+                }
             </div>
         </div>
         <div class="col-8">
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                <div class="tab-pane fade show active" id="list-@Model[0].Id" role="tabpanel" aria-labelledby="list-@Model[0].Id-list"><p>@Model[0].About</p><p>$ @Model[0].Price</p></div>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="tab-pane fade" id="list-@Model[i].Id" role="tabpanel" aria-labelledby="list-@Model[i].Id-list"><p>@Model[i].About</p><p>$ @Model[i].Price</p></div>
+                }
             </div>
         </div>
     </div>
-
-
-
-    @*<div class="list-group" id="myList" role="tablist">
-        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-        <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
-    </div>
-
-    <div class="tab-content">
-        <div class="tab-pane active" id="home" role="tabpanel">...</div>
-        <div class="tab-pane" id="profile" role="tabpanel">...</div>
-        <div class="tab-pane" id="messages" role="tabpanel">...</div>
-        <div class="tab-pane" id="settings" role="tabpanel">...</div>
-    </div>
-
-    <script>
-  $(function () {
-    $('#myList a:last-child').tab('show')
-  })
-    </script>*@
+    }
+    else
+    {
+        <h1>Empty list of competitions</h1>
+    }
+</div>

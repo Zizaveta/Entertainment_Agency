@@ -37,7 +37,7 @@ namespace EntertainmentAgency.Controllers
                 }
                 else
                 {
-                    l = db.PriceLists.First(elem => elem.user.UserName==User.Identity.Name).menu.ToList();
+                    l = db.PriceLists.First(elem => elem.user.UserName==User.Identity.Name && elem.StatusOfOrder==StatusOfOrder.Edit).menu.ToList();
                 }
             }
             return PartialView("_PartialMenuView", l);
@@ -53,7 +53,7 @@ namespace EntertainmentAgency.Controllers
                 }
                 else
                 {
-                    d = db.PriceLists.First(elem => elem.user.UserName == User.Identity.Name).design;
+                    d = db.PriceLists.First(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder==StatusOfOrder.Edit).design;
                 }
             }
             return PartialView("_PartialDesignView", d);
@@ -81,14 +81,43 @@ namespace EntertainmentAgency.Controllers
             }
             return PartialView("_PartialProduct", m);
         }
-        public ActionResult SendOrder()
+        public ActionResult SendOrder(string Comment)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
+                db.PriceLists.First(elem => elem.StatusOfOrder == StatusOfOrder.Edit && elem.user.UserName == User.Identity.Name).ComentToOrder = Comment;
+                db.PriceLists.First(elem => elem.StatusOfOrder == StatusOfOrder.Edit && elem.user.UserName == User.Identity.Name).Price = GetSum(0)?? 0;
                 db.PriceLists.First(elem => elem.StatusOfOrder == StatusOfOrder.Edit && elem.user.UserName == User.Identity.Name).StatusOfOrder = StatusOfOrder.Send;
                 db.SaveChanges();
             }
-            return View(Url.Action("Index","Home"));
+            return RedirectToAction("Index","Home");
+        }
+        public double? GetSum(int Id=0)
+        {
+            double sum = 0;
+            PriceList l;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (Id != 0)
+                {
+                    return db.PriceLists.First(elem => elem.Id == Id).Price;
+                }
+                else
+                {
+                    try
+                    {
+                        l = db.PriceLists.First(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit);
+                        sum += l.design.Price;
+                        sum += l.Competitions.Sum(elem => elem.Price);
+                        sum += l.menu.Sum(elem => elem.Q_ty * elem.Menu.Price);
+                    }
+                    catch
+                    {
+                        sum = 0;
+                    }
+                    return sum;
+                }
+            }        
         }
     }
 }

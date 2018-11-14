@@ -1,0 +1,33 @@
+﻿@model EntertainmentAgency.Models.Competition
+@{
+    ViewBag.Title = "AddCompetition";
+}
+
+<h2>AddCompetition</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(elem => elem.Name)
+        @Html.TextBoxFor(elem => elem.Name)
+    </div>
+
+    <div>
+        @Html.LabelFor(elem => elem.About)
+        @Html.TextBoxFor(elem => elem.About)
+    </div>
+
+    <div>
+        @Html.LabelFor(elem => elem.Price)
+        @Html.EditorFor(elem => elem.Price)
+    </div>
+
+    <div>
+        @Html.LabelFor(elem => elem.Price)
+       @* @Html.DropDownListFor(m => m., Model.typeOfEntertainment, "Select one...", new { @class="your-class-here" })*@
+    </div>
+
+    <div>
+        <p><button type="submit">Add</button></p>
+    </div>
+}

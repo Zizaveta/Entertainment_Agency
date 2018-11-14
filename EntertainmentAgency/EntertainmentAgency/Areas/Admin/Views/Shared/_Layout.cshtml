@@ -46,8 +46,8 @@
                         Type of entertainment
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Show all</a>
-                        <a class="dropdown-item" href="#">Add type</a>
+                        @Html.ActionLink("Show all", "TypesOfEntertainment", new { @class = "dropdown-item" }) <br>
+                        @Html.ActionLink("Add type", "AddType", new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -55,7 +55,7 @@
                         Designs
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Show all</a>
+                        @Html.ActionLink("Show all", "Designs", new { @class = "dropdown-item" })
                         <a class="dropdown-item" href="#">Add design</a>
                     </div>
                 </li>
@@ -64,8 +64,8 @@
                         Menu
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Show all</a>
-                        <a class="dropdown-item" href="#">Add product</a>
+                        @Html.ActionLink("Show all", "Menus", new { @class = "dropdown-item" }) <br>
+                        @Html.ActionLink("Add menu", "AddMenu", new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -73,7 +73,7 @@
                         Competitions
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Show all</a>
+                        @Html.ActionLink("Show all", "Competitions", new { @class = "dropdown-item" })
                         <a class="dropdown-item" href="#">Add competition</a>
                     </div>
                 </li>
@@ -82,8 +82,8 @@
                         Employeer
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Show all</a>
-                        <a class="dropdown-item" href="#">Add employeer</a>
+                        @Html.ActionLink("Show all", "Employeers", new { @class = "dropdown-item" }) <br>
+                        @Html.ActionLink("Add employeer", "AddEmployeer", new { @class = "dropdown-item" })
                     </div>
                 </li>
 

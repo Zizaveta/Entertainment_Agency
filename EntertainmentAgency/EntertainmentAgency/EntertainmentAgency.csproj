@@ -304,6 +304,13 @@
     <Content Include="Areas\Admin\Views\Auto\Menus.cshtml" />
     <Content Include="Areas\Admin\Views\Auto\TypesOfEntertainment.cshtml" />
     <Content Include="Areas\Admin\Views\Auto\Competitions.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\Designs.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\Employeers.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\AddCompetition.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\AddEmployeer.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\AddMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\AddDesign.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\AddType.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

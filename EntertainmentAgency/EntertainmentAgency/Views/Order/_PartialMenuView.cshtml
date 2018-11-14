@@ -39,6 +39,7 @@ else
                 data: { Id: myid, Count: $("#" + myid).val() },
                 success: function (result) {
                     alert("Added");
+                    $("#" + myid).val(0);
                 }
             });
         }

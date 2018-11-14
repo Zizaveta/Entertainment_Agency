@@ -3,49 +3,50 @@
     ViewBag.Title = "TypesOfEntertainment";
 }
 
-<h2>TypesOfEntertainment</h2>
 <div class="text-center">
-@if (Model != null)
-{
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        @for (int i = 1; i < Model.Count; i++)
-        {
-            <li data-target="#carouselExampleIndicators" data-slide-to=i></li>
-        }
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src=@Model[0].Img alt=@Model[0].Type>
-            <div class="carousel-caption d-none d-md-block">
-                <h5>@Model[0].Type</h5>
+    <h2>TypesOfEntertainment</h2>
+
+    @if (Model != null)
+    {
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" width="500px" height="400px">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                @for (int i = 1; i < Model.Count; i++)
+                {
+                    <li data-target="#carouselExampleIndicators" data-slide-to=i></li>
+                }
+            </ol>
+            <div class="carousel-inner" width="500px" height="300px">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src=@Model[0].Img alt=@Model[0].Type width="500px" height="700px">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>@Model[0].Type</h5>
+                    </div>
+                </div>
+                @for (int i = 1; i < Model.Count; i++)
+                {
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src=@Model[i].Img alt=@Model[i].Type width="500px" height="700px">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@Model[i].Type</h5>
+                        </div>
+                    </div>
+                }
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        @for (int i = 1; i < Model.Count; i++)
-        {
-        <div class="carousel-item">
-            <img class="d-block w-100" src=@Model[i].Img alt=@Model[i].Type>
-            <div class="carousel-caption d-none d-md-block">
-                <h5>@Model[i].Type</h5>
-            </div>
-        </div>
-        }
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-}
-else
-{
-    <h1>Empty model!</h1>
-}
+    }
+    else
+    {
+        <h1>Empty model!</h1>
+    }
 </div>
 <script>
     $('.carousel').carousel()

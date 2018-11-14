@@ -2,9 +2,9 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Your order</h2>
-
+<div class="text-center">
+    <h2>Your order</h2>
+</div>
 
 <div id="accordion">
     <div class="card">
@@ -65,12 +65,33 @@
         </div>
     </div>
 </div>
-
+<div class="text-center">
+    <h2>Comment to order:</h2><br>
+    <textarea id="Comment" class="col-5"></textarea>
+</div>
+<div class="text-right">
+    <h1>Sum:</h1>
+    <h1>$ @Html.Action("GetSum", "ShowOrder", new { Id = Model })</h1>
+</div>
 @if (Model == 0)
 {
     <div class="text-center">
-        @using (Html.BeginForm("SendOrder", "ShowOrder"))
-        {<input class="btn btn-success" type="submit" value="Send Order" />
-        }
+        <button class="btn btn-success" onclick="SendOrder()" value="Send Order">Send Order</button>
+
     </div>
 }
+
+<script>
+    function SendOrder() {
+        $.ajax({
+            url: "/ShowOrder/SendOrder",
+            method: "get",
+            dataType: "html",
+            data: { Comment: $("#Comment").val() },
+            success: function (result) {
+                alert("Your order is send");
+                window.location.href = "/Home/Index";
+            }
+        });
+    }
+</script>

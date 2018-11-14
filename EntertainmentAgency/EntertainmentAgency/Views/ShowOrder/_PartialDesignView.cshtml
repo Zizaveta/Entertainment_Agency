@@ -4,8 +4,11 @@
 
     @if (Model != null)
     {
-        <img src=@Model.Img class="rounded" />
+    <div class="text-center">
+        <img src=@Model.Img class="rounded">
         <p>$ @Model.Price</p>
+
+    </div>
 
     }
     else

@@ -1,0 +1,30 @@
+﻿@model EntertainmentAgency.Models.Design
+@{
+    ViewBag.Title = "AddDesign";
+}
+
+<div class="text-center">
+    <h2>AddDesign</h2>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(elem => elem.Img)
+            @Html.EditorFor(elem => elem.Img)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.Price)
+            @Html.EditorFor(elem => elem.Price)
+        </div>
+
+        <div>
+            @Html.LabelFor(elem => elem.typeOfEntertainment.Type)
+            @Html.EditorFor(elem => elem.typeOfEntertainment.Type))
+        </div>
+
+        <div>
+            <p><button type="submit">Add</button></p>
+        </div>
+    }
+</div>
