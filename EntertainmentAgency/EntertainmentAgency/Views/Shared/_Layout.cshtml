@@ -7,35 +7,117 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body background="~/Images/back-2.jpg">
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Test", "StartPage", "Home", new { area = ""}, null)</li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    @Html.Partial("_PartialLoginRegistr")
-                </ul>
-            </div>
-        </div>
-    </div>*@
-    <div class="container body-content">
-        @RenderBody()
-        
-        
-    </div>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("../Images/dawn-.jpg");
+        background-size: cover;
+    }
 
+    header {
+        justify-content: center;
+        background-color: rgb(0, 37, 68);
+    }
+
+    .left {
+        margin-left: 0;
+        height: 100%;
+        background-color: rgb(0, 37, 68);
+    }
+
+    .right {
+        margin-right: 0;
+        height: 100%;
+        background-color: rgb(0, 37, 68);
+    }
+    button:active.blue-a {
+        color: rgba(230, 240, 255, 0.99);
+        text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
+        border-color: rgba(120, 200, 255, 0.6) !important;
+        border-image: none;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 0 1px 0 0 rgba(120, 200, 255, 0.4) inset, 0 10px 0 0 rgba(120, 200, 255, 0.5) inset, 0 0 5px 2px rgba(120, 200, 255, 0.75), 0 0 10px 2px rgba(120, 200, 255, 0.75) inset !important;
+    }
+
+    button:hover.blue-a {
+        color: rgba(230, 240, 255, 0.99);
+        text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
+        border-color: rgba(120, 200, 255, 0.4);
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5), 0 10px rgba(0, 0, 0, 0.05) inset, 0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
+    }
+
+    .blue-a {
+        color: rgba(200, 230, 255, 0.99);
+        background-color: rgba(120, 200, 255, 0.25);
+        width: 75px;
+    }
+    .container .body-content{
+
+    }
+
+
+</style>
+<body >
+    @*<header>
+        <div class="row">
+            <div class="col-9">
+                <nav class="navbar navbar-expand-lg ">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            
+
+        </div>
+
+    </header>*@
+   
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="col-1">
+                <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Edit", "Account") + "'");">Edit</button>
+            </div>
+
+            <div class="col-2">
+                <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("LogOut", "Account") + "'");">Exit</button>
+            </div>
+        }
+        else
+        {
+            <div class="col-1">
+                <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Login", "Account") + "'");">Log in</button>
+            </div>
+
+            <div class="col-2">
+                <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("Register", "Account") + "'");">Sigh up</button>
+            </div>
+        }
+    </div>
+            <div class="container body-content">
+                @RenderBody()
+            </div>
+       
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
