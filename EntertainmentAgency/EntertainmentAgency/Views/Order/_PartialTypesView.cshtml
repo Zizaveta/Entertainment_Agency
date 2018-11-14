@@ -30,6 +30,7 @@
     <div class="container">
         <div class="container-content">
 
+
         </div>
 
 
@@ -53,45 +54,29 @@ else
 
 
 
-    $(function () {
+   function Next() {
 
-        @{ 
-                ViewBag.index = 0;
-                ViewBag.button = "_PartialTypesView";
-            }
+       $(".container .container-content .row").parent().children().remove();
         $(".container .container-content").append("<div class='row'></div>");
         $(".container .container-content .row").append("<div class='offset-1'>");
         $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count-1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
         $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
         $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
 
-    });
+    };
+    function Prev() {
+
+        
+        $(".container .container-content").append("<div class='row'></div>");
+        $(".container .container-content .row").append("<div class='offset-1'>");
+        $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count-1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+        $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+        $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+
+    };
    
 </script>
-<script>
-    $(document).ready(function () {
-        $(".carousel-control-next").click(function () {
-            
-            var str = "/Order/_PartialDesignView";
-    $.ajax({
-        url: "/Order/_PartialDesignView",
-        dataType: "html",
-        sucsess: function (result) {
-            alert(str)
-            $(".container .container-content").empty();
-        }
-    });
-    //$.ajax({
-    //    url: "/Order/_PartialDesignView",
-    //    dataType: "html",
-
-    //    success: function (result) {
-    //        $('#mainDiv').html(result);
-    //    }
-    //});
-
-});
-});
 
 
-</script>
+
+

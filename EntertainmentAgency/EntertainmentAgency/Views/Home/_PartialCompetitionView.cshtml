@@ -4,43 +4,33 @@
     body {
         background-size: cover;
     }
+
+    .row {
+        height: 40% !important;
+        display: flex;
+    }
+
+    img {
+        max-height: 200px;
+    }
 </style>
 
-@if (Model != null)
-{
-    <div class="container">
-        <div class="row">
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                <div class="col-4 text-center border border-secondary rounded ">
-                    <div>
-                        <strong> @Html.DisplayFor(elem => elem[i].Name) </strong>
-                    </div>
-
-                    <div>
-                        <div>
-                            @if (Model[i].typeOfEntertainment != null)
-                            {
-                                @Html.DisplayFor(elem => elem[i].typeOfEntertainment.Type)
-                            }
-                            else
-                            {
-                                <p>Unknow type of entertainment</p>
-                            }
-                        </div>
-                        <div>
-                            @Html.Label("$ ")
-                            @Html.DisplayFor(elem => elem[i].Price)
-                        </div>
-                    </div>
-
-                </div>
-            }
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <img src="../Images/1011884.jpg" />
+        </div>
+        <div class="col-5">
+            <img src="../Images/forograf.jpg" />
         </div>
     </div>
-}
-else
-{
-    <p>Empty!!!</p>
-}
+    <div class="row">
+        <div class="col-5"><img src="../Images/madmenbirthdayparty.jpg"></div>
+        <div class="col-7"><img src="../Images/wedding.jpg"></div>
+    </div>
+    <div class="row">
+        <div class="col-7"> <img src="../Images/getty.jpg"></div>
+        <div class="col-5"> <img src="../Images/Birthday.png"></div>
+    </div>
+</div>
 

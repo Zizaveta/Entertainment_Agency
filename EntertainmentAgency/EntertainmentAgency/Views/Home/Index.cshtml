@@ -5,172 +5,86 @@
 }
 <style>
 
-    div div div div div div div:hover {
-        background-color: aliceblue;
+    
+    .wnd {
+        padding: 30px;
+        box-shadow: 10px 10px 10px, lightblue; 
     }
-
-
-    .arrow_box:active, :hover, :focus {
-        outline: none !important;
-        outline-offset: 0;
+    .bt{
+        width:100px;
     }
-
-
-    .arrow_box {
-        position: relative;
-        background: #88b7d5;
-        border: 4px solid #c2e1f5;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+    .main{
+        
     }
-
-        .arrow_box:after, .arrow_box:before {
-            top: 100%;
-            left: 50%;
-            border: solid transparent;
-            content: " ";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-        }
-
-        .arrow_box:after {
-            border-color: rgba(136, 183, 213, 0);
-            border-top-color: #88b7d5;
-            border-width: 30px;
-            margin-left: -30px;
-        }
-
-        .arrow_box:before {
-            border-color: rgba(194, 225, 245, 0);
-            border-top-color: #c2e1f5;
-            border-width: 36px;
-            margin-left: -36px;
-        }
-
-
-    button:active.blue-a {
-        color: rgba(230, 240, 255, 0.99);
-        text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
-        border-color: rgba(120, 200, 255, 0.6) !important;
-        border-image: none;
-        border-style: solid;
-        border-width: 1px;
-        box-shadow: 0 1px 0 0 rgba(120, 200, 255, 0.4) inset, 0 10px 0 0 rgba(120, 200, 255, 0.5) inset, 0 0 5px 2px rgba(120, 200, 255, 0.75), 0 0 10px 2px rgba(120, 200, 255, 0.75) inset !important;
-    }
-
-    button:hover.blue-a {
-        color: rgba(230, 240, 255, 0.99);
-        text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
-        border-color: rgba(120, 200, 255, 0.4);
-        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5), 0 10px rgba(0, 0, 0, 0.05) inset, 0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
-    }
-
-    .blue-a {
-        color: rgba(200, 230, 255, 0.99);
-        background-color: rgba(120, 200, 255, 0.25);
-        width: 75px;
-    }
-
-    body {
-        background-size: cover;
-        background-image: url("../Images/back-2.jpg");
-    }
+   
 </style>
-<div class="row">
-    <div class="col-10">
-        Create your party)
-    </div>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div class="col-1">
-            <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Edit", "Account") + "'");">Edit</button>
+
+<div class="wnd">
+    <div class="row" style="height: 20px"></div>
+
+    <div class="row">
+
+
+
+        <div class="col-8">
+
+            <div id="TypesDiv">
+                @Html.Action("_PartialTypesView", "Home")
+            </div>
+            <div id="DesignDiv" style="display: none">
+                @Html.Action("_PartialDesignView", "Home")
+            </div>
+            <div id="MenuDiv" style="display: none">
+                @Html.Action("_PartialMenuView", "Home")
+            </div>
+            <div id="CompetitionDiv" style="display: none">
+                @Html.Action("_PartialCompetitionView", "Home")
+            </div>
         </div>
 
-        <div class="col-1">
-            <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("LogOut", "Account") + "'");">Exit</button>
+        <div class="col-4" style="background-color: rgb(0, 37, 68);">
+            <button onclick="ShowTypes()" class="button glass blue-a bt">Choose your event</button><br><br>
+            <button onclick="ShowDesigns()" class="button glass blue-a bt">Choose your design</button><br><br>
+            <button onclick="ShowCompetitions()" class="button glass blue-a bt">Choose your competition</button><br><br>
+            <button onclick="ShowMenus()" class="button glass blue-a bt">Choose your menu</button><br><br>
+           <input class="btn btn-success" type="submit" value="Create your own holiday" onclick="@("window.location.href='" + @Url.Action("Index", "Order") + "'")" />
+            
         </div>
-    }
-    else
-    {
-        <div class="col-1">
-            <button class="button glass blue-a" type="button" onclick="@("window.location.href='" + @Url.Action("Login", "Account") + "'");">Log in</button>
-        </div>
-
-        <div class="col-1">
-            <button class="button glass blue-a" onclick="@("window.location.href='" + @Url.Action("Register", "Account") + "'");">Sigh up</button>
-        </div>
-    }
 
 
-</div>
-<div class="row" style="height: 20px"></div>
-<div class="row">
-    <div class="col-3">
-
-        <button class="arrow_box" onclick="ShowTypes()">Choose<br> your<br> event </button><br><br><br>
-        <button class="arrow_box" onclick="ShowDesigns()">Choose<br> your<br> design </button><br><br><br>
-        <button class="arrow_box" onclick="ShowCompetitions()">Choose<br> your<br> concept </button><br><br><br>
-        <button class="arrow_box" onclick="ShowMenus()">Choose<br> your<br> menu </button><br><br><br>
-
-        @using (Html.BeginForm("Index", "Order"))
-        {<input class="btn btn-success" type="submit" value="Create your own holiday" />
-        }
 
     </div>
-    <div class="col-9">
 
-        <div id="CarouselDiv">
-            @Html.Action("_PartialCarouselView", "Home")
-        </div>
-        <div id="TypesDiv" style="display: none">
-            @Html.Action("_PartialTypesView", "Home")
-        </div>
-        <div id="DesignDiv" style="display: none">
-            @Html.Action("_PartialDesignView", "Home")
-        </div>
-        <div id="MenuDiv" style="display: none">
-            @Html.Action("_PartialMenuView", "Home")
-        </div>
-        <div id="CompetitionDiv" style="display: none">
-            @Html.Action("_PartialCompetitionView", "Home")
-        </div>
     </div>
-
-</div>
-
 
 
 
 
 <script>
-    $('.carousel').carousel();
+
     function ShowTypes() {
         $("#TypesDiv").show();
         $("#DesignDiv").hide();
         $("#MenuDiv").hide();
         $("#CompetitionDiv").hide();
-        $("#CarouselDiv").hide();
     }
     function ShowDesigns() {
         $("#TypesDiv").hide();
         $("#DesignDiv").show(); 
         $("#MenuDiv").hide();
         $("#CompetitionDiv").hide();
-        $("#CarouselDiv").hide();
     }
     function ShowMenus() {
         $("#TypesDiv").hide();
         $("#DesignDiv").hide();
         $("#MenuDiv").show();
         $("#CompetitionDiv").hide();
-        $("#CarouselDiv").hide();
     }
     function ShowCompetitions() {
         $("#TypesDiv").hide();
         $("#DesignDiv").hide();
         $("#MenuDiv").hide();
         $("#CompetitionDiv").show();
-        $("#CarouselDiv").hide();
     }
 </script>
