@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body >
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -25,21 +25,19 @@
             </div>
         </div>*@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Make a party)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Persons", "Persons")
-                    @*<a class="nav-link" href="#">Persons</a>*@
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Price Lists</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Users
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @Html.ActionLink("Persons", "Persons")
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,8 +53,8 @@
                         Designs
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @Html.ActionLink("Show all", "Designs", new { @class = "dropdown-item" })
-                        <a class="dropdown-item" href="#">Add design</a>
+                        @Html.ActionLink("Show all", "Designs", new { @class = "dropdown-item" }) <br />
+                        @Html.ActionLink("Add design", "AddDesign", new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -73,8 +71,8 @@
                         Competitions
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @Html.ActionLink("Show all", "Competitions", new { @class = "dropdown-item" })
-                        <a class="dropdown-item" href="#">Add competition</a>
+                        @Html.ActionLink("Show all", "Competitions", new { @class = "dropdown-item" }) <br />
+                        @Html.ActionLink("Add competition", "AddCompetition", new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -83,7 +81,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         @Html.ActionLink("Show all", "Employeers", new { @class = "dropdown-item" }) <br>
-                        @Html.ActionLink("Add employeer", "AddEmployeer", new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add employeer", "AddEmployeer", new { @class = "dropdown-item" })<br>
+                        @Html.ActionLink("Add competition to employeer", "AddCompetitionToEmployeer", new { @class = "dropdown-item" })
+
                     </div>
                 </li>
 

@@ -108,6 +108,7 @@ namespace EntertainmentAgency.Areas.Admin.Controllers
                 }
             }
         }
+        [HttpGet]
         public ActionResult AddCompetition()
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -115,6 +116,30 @@ namespace EntertainmentAgency.Areas.Admin.Controllers
                 if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
                 {
                     return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
+        public ActionResult AddCompetition(Competition model, int Type)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    try
+                    {
+                        db.Competitions.Add(new Competition() { About = model.About, Name = model.Name,  Price = model.Price, typeOfEntertainment=db.TypeOfEntertainments.First(elem=> elem.Id==Type) });
+                        db.SaveChanges();
+                        return RedirectToAction("Competitions", "Auto", new { area = "Admin" });
+                    }
+                    catch
+                    {
+                        ViewBag.Error = "Unknow mistake";
+                        return View();
+                    }
                 }
                 else
                 {
@@ -221,6 +246,30 @@ namespace EntertainmentAgency.Areas.Admin.Controllers
                 }
             }
         }
+        public ActionResult AddDesign(Design model, int Type)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    try
+                    {
+                        db.Designes.Add(new Design() { Img = model.Img, Price=model.Price, typeOfEntertainment=db.TypeOfEntertainments.First(elem => elem.Id==Type) });
+                        db.SaveChanges();
+                        return RedirectToAction("Designs", "Auto", new { area = "Admin" });
+                    }
+                    catch
+                    {
+                        ViewBag.Error = "Unknow mistake";
+                        return View();
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+        }
         [HttpGet]
         public ActionResult AddType()
         {
@@ -234,6 +283,13 @@ namespace EntertainmentAgency.Areas.Admin.Controllers
                 {
                     return RedirectToAction("Index", "Home", new { area = "" });
                 }
+            }
+        }
+        public PartialViewResult _PartialType()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                return PartialView(db.TypeOfEntertainments.ToList());
             }
         }
         public ActionResult AddType(TypeOfEntertainment model)
@@ -259,6 +315,62 @@ namespace EntertainmentAgency.Areas.Admin.Controllers
                     return RedirectToAction("Index", "Home", new { area = "" });
                 }
             }
+        }
+        public PartialViewResult _PartialCompetition()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                return PartialView(db.Competitions.ToList());
+            }
+        }
+        public PartialViewResult _PartialEmployeer()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                return PartialView(db.Employeers.ToList());
+            }
+        }
+        [HttpGet]
+        public ActionResult AddCompetitionToEmployeer()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+
+        }
+        public ActionResult AddCompetitionToEmployeer(int Employeer, int Competition)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (User.Identity.IsAuthenticated && db.Users.FirstOrDefault(elem => elem.UserName == User.Identity.Name).MyRole == MyRoles.Admin)
+                {
+                    try
+                    {
+                        db.Employeers.First(elem => elem.Id==Employeer).Competitions.Add(db.Competitions.First(elem => elem.Id==Competition));
+                        db.SaveChanges();
+                        return RedirectToAction("Employeers", "Auto", new { area = "Admin" });
+                    }
+                    catch
+                    {
+                        ViewBag.Error = "Unknow mistake";
+                        return View();
+                    }
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home", new { area = "" });
+                }
+            }
+
         }
     }
 

@@ -311,6 +311,10 @@
     <Content Include="Areas\Admin\Views\Auto\AddMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Auto\AddDesign.cshtml" />
     <Content Include="Areas\Admin\Views\Auto\AddType.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\_PartialType.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\_PartialCompetition.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\_PartialEmployeer.cshtml" />
+    <Content Include="Areas\Admin\Views\Auto\AddCompetitionToEmployeer.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

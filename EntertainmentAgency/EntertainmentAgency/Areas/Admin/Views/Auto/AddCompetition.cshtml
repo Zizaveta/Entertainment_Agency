@@ -23,7 +23,8 @@
     </div>
 
     <div>
-        @Html.LabelFor(elem => elem.Price)
+        @Html.LabelFor(elem => elem.typeOfEntertainment)
+        @Html.Action("_PartialType","Auto")
        @* @Html.DropDownListFor(m => m., Model.typeOfEntertainment, "Select one...", new { @class="your-class-here" })*@
     </div>
 

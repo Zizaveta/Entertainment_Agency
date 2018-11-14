@@ -8,9 +8,10 @@
 
     @using (Html.BeginForm())
     {
+        <img id="myimg" />
         <div>
             @Html.LabelFor(elem => elem.Img)
-            @Html.EditorFor(elem => elem.Img)
+            @Html.TextBoxFor(elem => elem.Img)
         </div>
 
         <div>
@@ -19,8 +20,8 @@
         </div>
 
         <div>
-            @Html.LabelFor(elem => elem.typeOfEntertainment.Type)
-            @Html.EditorFor(elem => elem.typeOfEntertainment.Type))
+           @Html.Action("_PartialType","Auto")
+
         </div>
 
         <div>
@@ -28,3 +29,8 @@
         </div>
     }
 </div>
+
+<script>
+    document.getElementById("Img").onchange = function () { document.getElementById("myimg").src =$("#Img").val() };
+
+</script>

@@ -58,7 +58,7 @@
                                 {
                                     <div class="col-md-3 rounded-circle">
                                         <a href="#">
-                                            <img src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
+                                            <img height="300px" src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
                                         </a>
                                     </div>
                                 }
@@ -66,41 +66,45 @@
                             </div>
                             <!--.row-->
                         </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                @for (int i = 4; i < Model.Count; i++)
-                                {
+                        @for (int i = 4; i < Model.Count - 1; i++)
+                        {
+                            <div class="carousel-item">
+                                <div class="row">
+                                    @for (int j = i; j < i + 4 && j < Model.Count; j++)
+                                    {
                                     <div class="col-md-3 rounded-circle">
                                         <a href="#">
-                                            <img src=@Model[i].Img alt=@Model[i].Price style="max-width:100%;" class="rounded-circle">
+                                            <img height="300px" src=@Model[j].Img alt=@Model[j].Price style="max-width:100%;" class="rounded-circle">
                                         </a>
                                     </div>
+                                            }
+                                    @(i+=4)
+                                       </div>
+                                        <!--.row-->
+                                    </div>
                                 }
-
+                                    <!--.item-->
+                                
+                                <!--.carousel-inner-->
                             </div>
-                            <!--.row-->
+                            <!--.Carousel-->
                         </div>
-                        <!--.item-->
                     </div>
-                    <!--.carousel-inner-->
                 </div>
-                <!--.Carousel-->
-            </div>
         </div>
-    </div>
 
-}
-else
-{
-    <h4>Empty list</h4>
-}
+            }
+                        else
+                        {
+                        <h4>Empty list</h4>
+                        }
 
 
-<script>
-    // optional
-    $('#blogCarousel').carousel({
-        interval: 5000
-    });
-    
-    }
-</script>
+                        <script>
+                            // optional
+                            $('#blogCarousel').carousel({
+                                interval: 5000
+                            });
+
+                            }
+                        </script>

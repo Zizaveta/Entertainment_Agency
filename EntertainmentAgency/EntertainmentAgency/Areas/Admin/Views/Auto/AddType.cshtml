@@ -13,6 +13,7 @@
     }
     @using (Html.BeginForm())
     {
+        <img id="myimg">
         <div>
             @Html.LabelFor(elem => elem.Img)
             @Html.EditorFor(elem => elem.Img)
@@ -26,3 +27,9 @@
         <p><button class="btn btn-success" type="submit">Add</button></p>
     }
 </div>
+
+
+<script>
+    document.getElementById("Img").onchange = function () { document.getElementById("myimg").src =$("#Img").val() };
+
+</script>

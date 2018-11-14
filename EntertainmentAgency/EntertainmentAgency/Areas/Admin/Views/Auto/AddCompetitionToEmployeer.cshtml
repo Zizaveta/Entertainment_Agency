@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "AddCompetitionToEmployeer";
+}
+<div class="text-center">
+    @using (Html.BeginForm())
+    {
+        <h2>AddCompetitionToEmployeer</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    @Html.Action("_PartialEmployeer", "Auto")
+                </div>
+                <div class=" text-center col-4">
+                    <h3>Add</h3>
+                </div>
+                <div class="col-4">
+                    @Html.Action("_PartialCompetition", "Auto")
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Save" />
+    }
+    </div>
