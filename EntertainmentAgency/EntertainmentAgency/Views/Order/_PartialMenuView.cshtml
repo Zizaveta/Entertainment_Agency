@@ -32,6 +32,7 @@ else
 
     <script>
         function AddMenu(myid) {
+            alert(myid + "," + $("#" + myid).val());
             $.ajax({
                 url: "/Order/AddMenu",
                 method: "post",

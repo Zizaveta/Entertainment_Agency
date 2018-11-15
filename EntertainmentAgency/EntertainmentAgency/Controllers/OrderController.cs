@@ -39,6 +39,7 @@ namespace EntertainmentAgency.Controllers
 
         public ActionResult _PartialTypesView()
         {
+          //  ViewBag.index = index;
             List<EntertainmentAgency.Models.TypeOfEntertainment> m;
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -57,7 +58,7 @@ namespace EntertainmentAgency.Controllers
                     db.PriceLists.FirstOrDefault(elem => elem.user.UserName == User.Identity.Name && elem.StatusOfOrder == StatusOfOrder.Edit).TypeOfEntertainment = db.TypeOfEntertainments.FirstOrDefault(elem => elem.Id == id);
                     db.SaveChanges();
                 }
-                m = db.Designes.Where(elem => elem.typeOfEntertainment.Id == db.PriceLists.FirstOrDefault(elem2=> elem2.user.UserName==User.Identity.Name && elem2.StatusOfOrder==StatusOfOrder.Edit).TypeOfEntertainment.Id).OrderBy(elem => elem.typeOfEntertainment.Type).ToList();
+                m = db.Designes./*Where(elem => elem.typeOfEntertainment.Id == db.PriceLists.FirstOrDefault(elem2=> elem2.user.UserName==User.Identity.Name && elem2.StatusOfOrder==StatusOfOrder.Edit).TypeOfEntertainment.Id).OrderBy(elem => elem.typeOfEntertainment.Type).*/ToList();
             }
             return PartialView(m);
         }

@@ -2,24 +2,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .bt {
+        width: 155px;
+    }
+</style>
+<input type="hidden" id="currentIndex" value="0">
+
 <h2>@ViewBag.Order</h2>
 <div class="row">
     <div class="text-right">
         <div class="container">
             <div class="row justify-content-end">
-                <div class="col-1">
-                    <button class="id-btn" id="_PartialTypesView">Type</button>
+                <div class="col-2">
+                    <button class="id-btn button glass blue-a bt" onclick="Func1()" id="TypeIdButton">Type</button>
                 </div>
-                <div class="col-1">
-                    <button class="id-btn" id="_PartialDesignView">Design</button>
+                <div class="col-2">
+                    <button class="id-btn button glass blue-a bt" onclick="Func2()" id="DesignIdButton">Design</button>
                 </div>
-                <div class="col-1">
-                    <button class="id-btn" id="_PartialMenuView">Menu</button>
+                <div class="col-2">
+                    <button class="id-btn button glass blue-a bt" onclick="Func3()" id="MenuIdButton">Menu</button>
                 </div>
-                <div class="col-1">
-                    <button class="id-btn" id="_PartialCompetitionView">Competition</button>
+                <div class="col-2">
+                    <button class="id-btn button glass blue-a bt" onclick="Func4()" id="CompetitionIdButton">Competition</button>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <a class="btn btn-success" href="/ShowOrder/Index">Show Price List</a>
                 </div>
             </div>
@@ -27,37 +34,83 @@
     </div>
 
     <div id="mainDiv" class="justify-content-end">
-        
-        @Html.Action("_PartialTypesView", "Order")
+
+        @Html.Action("_PartialTypesView", "Order", new { index = 0 })
     </div>
 
 
 </div>
 
 
-@section scripts{
+
     @Scripts.Render("~/bundles/jquery")
-    <script>
-        var flag = true;
-        $(document).ready(function () {
-      {
-                @{}
-               
+<script>
+    function Func3() {
+        $.ajax({
+            url: "/Order/_PartialMenuView",
+            dataType: "html",
+            success: function (result) {
+                $('#mainDiv').html(result);
+            }
+        });
+    }
+    function Func4() {
+        $.ajax({
+            url: "/Order/_PartialCompetitionView",
+            dataType: "html",
+            success: function (result) {
+                $('#mainDiv').html(result);
+            }
+        });
+    }
+    function Func1() {
+        $.ajax({
+            url: "/Order/_PartialTypesView",
+            dataType: "html",
+            success: function (result) {
+                $('#mainDiv').html(result);
+            }
+        });
+    }
+    function Func2() {
+        $.ajax({
+            url: "/Order/_PartialDesignView",
+            dataType: "html",
+            success: function (result) {
+                $('#mainDiv').html(result);
+            }
+        });
+    }
 
-            $(".id-btn").click(function () {
-                     var str = "/Order/" + this.id;
-                $.ajax({
-                    url: str,
-                    data: {"index": 3},
-                    dataType: "html",
-                    success: function (result) {
-                        $('#mainDiv').html(result);
-                         }
-                     });
-                 });
+
+    //$("#MenuIdButton").click(function () {
+    //    $.ajax({
+    //        url: "/Order/_PartialMenuView",
+    //        dataType: "html",
+    //        success: function (result) {
+    //            $('#mainDiv').html(result);
+    //        }
+    //    });
 
 
-             });
 
-    </script>
-}
+                //$(".id-btn").click(function () {
+
+                //    let curIndex = $("#currentIndex").val();
+
+
+                //     var str = "/Order/" + this.id;
+                //$.ajax({
+                //    url: str,
+                //    data: {"index": curIndex},
+                //    dataType: "html",
+                //    success: function (result) {
+                //        $('#mainDiv').html(result);
+
+                //        }
+                //     });
+                // });
+
+
+
+</script>

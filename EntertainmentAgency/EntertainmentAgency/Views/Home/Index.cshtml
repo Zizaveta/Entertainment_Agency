@@ -12,11 +12,9 @@
     }
     .bt{
         width:100px;
+        color: rgb(0, 37 ,68)
     }
    
-    .main{
-        
-    }
    
 </style>
 
@@ -27,7 +25,7 @@
 
 
 
-        <div class="col-8">
+        <div class="col-7">
 
             <div id="TypesDiv">
                 @Html.Action("_PartialTypesView", "Home")
@@ -43,14 +41,18 @@
             </div>
         </div>
 
-        <div class="col-4" style="background-color: rgb(0, 37, 68);">
-            <button onclick="ShowTypes()" class="button glass blue-a bt">Choose your event</button><br><br>
-            <button onclick="ShowDesigns()" class="button glass blue-a bt">Choose your design</button><br><br>
-            <button onclick="ShowCompetitions()" class="button glass blue-a bt">Choose your competition</button><br><br>
-            <button onclick="ShowMenus()" class="button glass blue-a bt">Choose your menu</button><br><br>
-           <input class="btn btn-success" type="submit" value="Create your own holiday" onclick="@("window.location.href='" + @Url.Action("Index", "Order") + "'")" />
-            
-        </div>
+        <div class="col-3 text-center" style="vertical-align: central;background-image:url( ../Images/sky2.jpg); background-size: cover;background: #a7c7dc; /* Old browsers */
+background: -moz-linear-gradient(top, #a7c7dc 0%, #85b2d3 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #a7c7dc 0%,#85b2d3 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #a7c7dc 0%,#85b2d3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */">
+        <button onclick="ShowTypes()" class="button glass blue-a bt">Choose your event</button><br><br>
+        <button onclick="ShowDesigns()" class="button glass blue-a bt">Choose your design</button><br><br>
+        <button onclick="ShowCompetitions()" class="button glass blue-a bt">Choose your competition</button><br><br>
+        <button onclick="ShowMenus()" class="button glass blue-a bt">Choose your menu</button><br><br>
+        <input class="btn btn-success" type="submit" value="Create your own holiday" onclick="@("window.location.href='" + @Url.Action("Index", "Order") + "'")" />
+
+    </div>
 
 
 
