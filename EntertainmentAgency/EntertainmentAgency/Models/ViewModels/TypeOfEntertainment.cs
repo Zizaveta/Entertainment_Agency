@@ -19,5 +19,6 @@ namespace EntertainmentAgency.Models
         public virtual List<Design> ListOfDesigns { get; set; }
         public virtual List<Competition> ListOfCompetitions { get; set; }
         public virtual List<PriceList> ListOfPriceList { get; set; }
+        
     }
 }

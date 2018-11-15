@@ -34,11 +34,11 @@
         </div>
 
 
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button">
+        <a class="carousel-control-prev" onclick="Prev()" href="#carouselExampleIndicators" role="button">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" >
+        <a class="carousel-control-next" onclick="Next()" href="#carouselExampleIndicators" role="button" >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -50,32 +50,83 @@ else
     <h4>Empty list</h4>
 }
 @Scripts.Render("~/bundles/jquery")
-<script>
+    <script>
+        
 
 
+        function Next() {
+           
+            @using (EntertainmentAgency.Models.ApplicationContext db = new EntertainmentAgency.Models.ApplicationContext())
+            {
+                var index = db.Idxes.ToList()[0].index;
+            }
+            alert(index)
 
-   function Next() {
+        $(".container .container-content .row").parent().children().remove();
 
-       $(".container .container-content .row").parent().children().remove();
-        $(".container .container-content").append("<div class='row'></div>");
-        $(".container .container-content .row").append("<div class='offset-1'>");
-        $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count-1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
-        $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
-        $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+            if (index == 0) {
+         
+           $(".container .container-content").append("<div class='row'></div>");
+           $(".container .container-content .row").append("<div class='offset-1'>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count - 1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+           $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+          $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+        
+          
+       }
+       else if (index== @Model.Count-1)
+      {
 
+           $(".container .container-content").append("<div class='row'></div>");
+           $(".container .container-content .row").append("<div class='offset-1'>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count - 2].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+           $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[Model.Count - 1].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[0].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+
+       }
+      else{
+          alert("bla bla")
+           $(".container .container-content").append("<div class='row'></div>");
+           $(".container .container-content .row").append("<div class='offset-1'>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Convert.ToInt32(@ViewBag.index)].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+           $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[Convert.ToInt32(@ViewBag.index)].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+          $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+
+
+       }
     };
     function Prev() {
+        @*$(".container .container-content .row").parent().children().remove();
+       if (@ViewBag.index== 0) {
+           $(".container .container-content").append("<div class='row'></div>");
+           $(".container .container-content .row").append("<div class='offset-1'>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count-1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+           $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+           @ViewBag.index=@Model.Count-1
+       }
+       else if (@ViewBag.index== @Model.Count-1)
+       {
+           $(".container .container-content").append("<div class='row'></div>");
+           $(".container .container-content .row").append("<div class='offset-1'>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count - 2].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+           $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[Model.Count - 1].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[0].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+           @ViewBag.index=0;
+       }
+       else if(index!=0&&index!=@Model.Count-1){
+           @*$(".container .container-content").append("<div class='row'></div>");
+           $(".container .container-content .row").append("<div class='offset-1'>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[ViewBag.index-2].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
+           $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[ViewBag.index-1].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
+           $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[ViewBag.index].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
+           @ViewBag.index--*@
+       //}
 
-        
-        $(".container .container-content").append("<div class='row'></div>");
-        $(".container .container-content .row").append("<div class='offset-1'>");
-        $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px;' class= 'card - img - top' src = @Model[Model.Count-1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div ></div>");
-        $(".container .container-content .row").append("<div class='col-4'><div class='card maxcard'><img style='height: 200px; class= 'card - img - top' src =@Model[0].Img  alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some  on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary max-btn'>Go somewhere</a></div></div></div>");
-        $(".container .container-content .row").append("<div class='col-3'><div class='card mincard'><img style='height: 150px; class= 'card - img - top' src =@Model[1].Img alt = 'Card image cap' ><div class='card-body' ><h5 class='card-title'>Card title</h5><p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p><a href='#' class='btn btn-primary min-btn'>Go somewhere</a></div></div></div>");
 
     };
-   
-</script>
+        
+    </script>
 
 
 

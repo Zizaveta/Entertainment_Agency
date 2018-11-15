@@ -74,6 +74,12 @@ namespace EntertainmentAgency.Models
             context.Competitions.AddRange(new List<Competition>() { c1, c2, c3, c4, c5});
             
 
+            context.Idxes.Add(new Idx() { index = 0 });
+
+
+
+
+
             context.SaveChanges();
             //base.Seed(context);
         }

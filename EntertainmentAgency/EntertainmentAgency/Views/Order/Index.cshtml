@@ -27,6 +27,7 @@
     </div>
 
     <div id="mainDiv" class="justify-content-end">
+        
         @Html.Action("_PartialTypesView", "Order")
     </div>
 
@@ -37,24 +38,26 @@
 @section scripts{
     @Scripts.Render("~/bundles/jquery")
     <script>
-
+        var flag = true;
         $(document).ready(function () {
-            @ViewBag.index=0
-           
+      {
+                @{}
+               
 
             $(".id-btn").click(function () {
-                var str = "/Order/" + this.id;
+                     var str = "/Order/" + this.id;
                 $.ajax({
                     url: str,
+                    data: {"index": 3},
                     dataType: "html",
                     success: function (result) {
                         $('#mainDiv').html(result);
-                    }
-                });
-            });
+                         }
+                     });
+                 });
 
 
-        });
-       
+             });
+
     </script>
 }
