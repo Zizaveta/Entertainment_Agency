@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace EntertainmentAgency.Models
 {
-    internal class MyInit<T> : CreateDatabaseIfNotExists<ApplicationContext>
+    internal class MyInit<T> : DropCreateDatabaseAlways<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {
@@ -56,14 +56,22 @@ namespace EntertainmentAgency.Models
             context.Designes.AddRange(new List<Design>() { d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20 });
 
 
-            // ДОПИСАТИ COMPETITIONS i EMPLOYEERS!!!
+            Employeer e1 = new Employeer() { Email = "mail1@ukr.net", Name = "Alexander Pumpkin", Phone = "(066) 705-33-20" };
+            Employeer e2 = new Employeer() { Email = "qwerty@mail.ru", Name = "Danylyuk Alexander", Phone = "(097) 988-90-09" };
+            Employeer e3 = new Employeer() { Email = "hello@gmail.co", Name = "Anna Vovk", Phone = "(068) 768-84-83" };
+            Employeer e4 = new Employeer() { Email = "mail111@list.ru", Name = "Tatyana Novak", Phone = "(097) 854-57-76" };
+            Employeer e5 = new Employeer() { Email = "gmail@ukr.net", Name = "Svetlana Raichuk", Phone = "(093) 143-73-96" };
+            Employeer e6 = new Employeer() { Email = "mail3.mail@gmail.com", Name = "Tatiana Kyrchuk", Phone = "(050) 883-60-22" };
+            Employeer e7 = new Employeer() { Email = "myemail@gmail.com", Name = "Sergiy Sobolevsky", Phone = "(093) 099-30-00" };
+            context.Employeers.AddRange(new List<Employeer>() { e1, e2, e3, e4, e5, e6, e7 });
 
-            context.Competitions.Add(new Competition() { Name = "competition1", About = "About competititon1", Price = 20.10 });
-            context.Competitions.Add(new Competition() { Name = "competition2", About = "About competititon2", Price = 15.10 });
-            context.Competitions.Add(new Competition() { Name = "competition3", About = "About competititon3", Price = 12.10 });
-            context.Competitions.Add(new Competition() { Name = "competition4", About = "About competititon4", Price = 45.10 });
-            context.Competitions.Add(new Competition() { Name = "competition5", About = "About competititon5", Price = 10.10 });
 
+            Competition c1 = new Competition() { Name = "Photographer", About = "Photographers, known for their creative thinking and artistic approach to photography", Price =7000, Employeers = {e1,e5 } };
+            Competition c2 = new Competition() { Name = "Video shooting", About = "High - quality shooting of a day that is important for you will bring joy in the future", Price =13000, Employeers = {e2 } };
+            Competition c3 = new Competition() { Name = "Musician", About = "Any music to your liking and a pleasant holiday is guaranteed", Price =15000, Employeers = {e7,e3,e1 } };
+            Competition c4 = new Competition() { Name = "Tamada", About = "This person will raise your mood and make you remember the day for life", Price =10000, Employeers = {e4,e6 } };
+            Competition c5 = new Competition() { Name = "Animators", About = "Fun jokes and interesting contests are guaranteed by our animators", Price =8000, Employeers = { e3, e6} };
+            context.Competitions.AddRange(new List<Competition>() { c1, c2, c3, c4, c5});
             
 
             context.SaveChanges();
