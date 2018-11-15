@@ -64,7 +64,12 @@ namespace EntertainmentAgency.Models
             context.Competitions.Add(new Competition() { Name = "competition4", About = "About competititon4", Price = 45.10 });
             context.Competitions.Add(new Competition() { Name = "competition5", About = "About competititon5", Price = 10.10 });
 
-            
+
+            context.Idxes.Add(new Idx() { index = 0 });
+
+
+
+
 
             context.SaveChanges();
             //base.Seed(context);

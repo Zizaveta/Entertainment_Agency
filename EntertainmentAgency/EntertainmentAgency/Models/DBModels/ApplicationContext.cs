@@ -18,6 +18,7 @@ namespace EntertainmentAgency.Models
         public virtual DbSet<Employeer> Employeers { get; set; }
         public virtual DbSet<PriceList> PriceLists { get; set; }
         public virtual DbSet<TypeOfEntertainment> TypeOfEntertainments { get; set; }
+        public virtual DbSet<Idx> Idxes { get; set; }
         public static ApplicationContext Create()
         {
             return new ApplicationContext();
